@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.29)  20 APR 2026 10:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.29)  20 APR 2026 11:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -490,7 +490,7 @@ LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 14.
- (tex/introduccion.aux) (tex/desarrollo.aux) (tex/conclusiones.aux))
+)
 \openout1 = `document.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
@@ -637,31 +637,9 @@ Package spanish Warning: Replacing `OT1/cmr/bx/sc' by
 [2
 
 
-]
-\openout2 = `tex/introduccion.aux'.
-
- (tex/introduccion.tex)
+] (tex/introduccion.tex) (tex/desarrollo.tex) (tex/conclusiones.tex)
 
 [1
-
-
-]
-\openout2 = `tex/desarrollo.aux'.
-
- (tex/desarrollo.tex)
-
-[2
-
-
-
-]
-\openout2 = `tex/conclusiones.aux'.
-
- (tex/conclusiones.tex)
-
-[3
-
-
 
 ] (document.bbl
 
@@ -674,14 +652,10 @@ See the caption package documentation for explanation.
 
 
 
-[4
-
-
-] (document.aux (tex/title.aux)
+[2] (document.aux (tex/title.aux)
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
- (tex/introduccion.aux) (tex/desarrollo.aux)
-(tex/conclusiones.aux))
+)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-10-09>
@@ -694,13 +668,13 @@ Package rerunfilecheck Info: File `document.out' has not changed.
 (rerunfilecheck)             Checksum: 66A246717E46BE8F5318E7FAFCEE2362;302.
  ) 
 Here is how much of TeX's memory you used:
- 17943 strings out of 468079
- 348553 string characters out of 5427202
- 735110 words of memory out of 5000000
- 46388 multiletter control sequences out of 15000+600000
+ 17893 strings out of 468079
+ 346488 string characters out of 5427202
+ 733814 words of memory out of 5000000
+ 46352 multiletter control sequences out of 15000+600000
  632803 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,12n,97p,321b,1056s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,12n,97p,383b,1056s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmb
 x10.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmbx12.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
@@ -708,9 +682,9 @@ fonts/cm/cmbx6.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmbx9.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmcsc10.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmr10.pfb>
-Output written on document.pdf (6 pages, 102108 bytes).
+Output written on document.pdf (4 pages, 102546 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
- 12 named destinations out of 1000 (max. 500000)
+ 77 PDF objects out of 1000 (max. 8388607)
+ 10 named destinations out of 1000 (max. 500000)
  30 words of extra memory for PDF output out of 10000 (max. 10000000)
 
