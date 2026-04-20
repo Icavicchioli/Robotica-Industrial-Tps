@@ -1,0 +1,83 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{mystyle}
+
+\pdfsuppresswarningpagegroup=1
+
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage[square,numbers]{natbib}
+\bibliographystyle{ieeetr}
+
+\usepackage{siunitx}
+
+\usepackage{ifpdf}
+\ifpdf
+  \DeclareGraphicsExtensions{.pdf,.png}
+\else
+\fi
+
+
+\usepackage{mystyle}
+
+\pdfsuppresswarningpagegroup=1
+
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{ {./img/} }
+
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage[square,numbers]{natbib}
+\usepackage{amsmath}
+\bibliographystyle{ieeetr}
+
+\usepackage{siunitx}
+
+\usepackage{ifpdf}
+\ifpdf
+\DeclareGraphicsExtensions{.pdf,.png}
+\else
+\fi
+
+\setcounter{tocdepth}{1}
+
+
+
+\setcounter{tocdepth}{1}
+
+\runninghead{}
+\footertext{}
+
+\begin{document}
+
+	% -------------------------
+	% Preliminares
+	% -------------------------
+	\pagenumbering{roman}
+	\include{tex/title}
+
+	\tableofcontents
+	
+	\clearpage
+	\pagenumbering{arabic}
+
+	% -------------------------
+	% Capítulos
+	% -------------------------
+	\include{tex/introduccion}
+	\include{tex/desarrollo}
+	\include{tex/conclusiones}
+
+	% -------------------------
+	% Bibliografía
+	% -------------------------
+	\bibliographystyle{ieeetr}
+	\bibliography{bibliografia}
+
+\end{document}
