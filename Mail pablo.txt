@@ -1,0 +1,14 @@
+Hola!
+
+Les paso algunas ideas para enfocarlos en hallar la solución del TP. No necesariamente tienen que seguir este camino.
+
+- Podemos plantear un primer análisis con la hipótesis de que la trayectoria buscada se conseguirá a z=cte
+- Lo que hablamos en clase: pueden plantear un recorrido entre -100mm a 100mm en y0, ya que el tiempo del recorrido no dependerá de si esta trayectoria está rotada según z0
+- En ese caso consideremos el plano y0=100. Notar que en ese plano tenemos los puntos más afectados por la singularidad del codo (brazo extendido)
+- Si además consideramos el plano y0=0, vemos que allí estarán los puntos más afectados por la singularidad del brazo (muñeca sobre eje 1).
+- Entonces los límites de velocidades surgen del análisis de esos 2 planos: uno empuja a la trayectoria para afuera del volumen de trabajo, y el otro para adentro. Pueden tomar esto como una hipótesis y luego ponerla a prueba.
+- Como se quiere minimizar tiempo de recorrido, se puede armar una función de costo basado en este criterio, y luego minimizar. Pero como la trayectoria se espera realizar a velocidad constante, es equivalente a maximizar velocidades => puedo replantear la función de costo para que tome las velocidades máximas (J*qp_max) en cada plano, y para una trayectoria elegida se quede con la menor. Esto es mucho más simple y rápido de calcular.
+- Se puede repetir el análisis pero ahora considerando trayectorias contenidas en el plano y0=0? Es decir cambiar el supuesto inicial que disparó la serie de observaciones que se plantearon.
+
+Saludos
+Pablo
