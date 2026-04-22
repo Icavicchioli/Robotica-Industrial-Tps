@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d
+This is BibTeX, Version 0.99e
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: document.aux
 Reallocating 'name_of_file' (item size: 1) to 7 items.
@@ -9,13 +9,7 @@ Illegal, another \bibstyle command---line 12 of file document.aux
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: tex/title.aux
-Reallocating 'name_of_file' (item size: 1) to 21 items.
-A level-1 auxiliary file: tex/introduccion.aux
-Reallocating 'name_of_file' (item size: 1) to 19 items.
-A level-1 auxiliary file: tex/desarrollo.aux
-Reallocating 'name_of_file' (item size: 1) to 21 items.
-A level-1 auxiliary file: tex/conclusiones.aux
-Illegal, another \bibstyle command---line 18 of file document.aux
+Illegal, another \bibstyle command---line 24 of file document.aux
  : \bibstyle
  :          {ieeetr}
 I'm skipping whatever remains of this command
@@ -24,7 +18,7 @@ I found no \citation commands---while reading file document.aux
 Database file #1: bibliografia.bib
 You've used 0 entries,
             1876 wiz_defined-function locations,
-            481 strings with 3549 characters,
+            478 strings with 3491 characters,
 and the built_in function-call counts, 20 in all, are:
 = -- 0
 > -- 0
