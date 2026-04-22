@@ -1,1 +1,63 @@
 \section{Desarrollo}
+
+Inicialmente, como el problema así planteado es difícil de abordar, se simplificó de las siguientes maneras:
+
+\begin{itemize}
+	\item La trayectoria rectilínea que se busca será paralela al eje $Y$ y simétrica respecto del plano $XZ$ del robot.
+	\item Se desarrollará para X positivos.
+\end{itemize}
+
+Estas simplificaciones permiten desarrollar las consignas sin perder valor educativo y además permite hacer una demostración en vivo.
+
+\subsection{Teoría}
+
+El jacobiano es función de las variables articulares, y relaciona las velocidades articulares con la velocidades cartesianas. Para una pose dada, el jacobiano indica, entre otras cosas, la capacidad de desarrollar velocidad del robot en esa pose. Una trayectoria se puede pensar como una secuencia de poses, cada una con su propio jacobiano.
+
+\begin{equation}
+\begin{bmatrix}
+	v \\
+	\omega
+\end{bmatrix}
+=
+J(q)\cdot \dot{q}
+\end{equation}
+
+Si el robot ha de moverse en una trayectoria cartesiana lineal a velocidad constante, la velocidad máxima posible será la menor velocidad que se dé entre 2 poses consecutivas de la trayectoria. Es decir, el robot se moverá tan rápido como permita el segmento de la trayectoria más lento. En términos matemáticos, si definimos $\mathcal{V}$ como el conjunto de velocidades que se desarrollan en una trayectoria, la velocidad constante máxima será el valor mínimo del set.
+
+\begin{equation}
+	\mathcal{V} = \{ v_0, v_1, \dots, v_{N-1} \}
+\end{equation}
+
+\begin{equation}
+	v_{cte}^{\max} =\min \mathcal{V} = \min_{i \in \{0,\dots,N-1\}} v_i
+\end{equation}
+
+Suponiendo que el robot puede desarrollar sus velocidades articulares máximas, es posible calcular la velocidad cartesiana máxima teórica para cada punto de una trayectoria. Luego, la velocidad constante máxima en la dirección del movimiento será la velocidad cartesiana mínima encontrada proyectada sobre dicha dirección.
+
+Esto último parece bien conceptualmente, pero no se ajusta a la realidad, porque no tiene en cuenta que, si el robot se mueve a velocidad angular máxima siempre, la trayectoria que la herramienta desarrolle no va a ser lineal.
+
+Otra forma de encarar el problema es evaluar la trayectoria desde un enfoque cinemático diferencial (de a pedacitos), imponiendo directamente la condición de movimiento cartesiano rectilíneo y analizando las exigencias articulares que esto implica. En este sentido, para cada punto del recorrido se calcula, a partir de la inversa de la matriz Jacobiana, la velocidad angular que debe desarrollar cada articulación para sostener el avance en la dirección deseada. Estas velocidades requeridas se comparan con los límites máximos de cada actuador, identificando en cada instante cuál de ellos actúa como cuello de botella y, por lo tanto, fija la velocidad cartesiana máxima admisible en ese punto. Finalmente, dado que la consigna exige mantener velocidad constante a lo largo de toda la trayectoria, se adopta como velocidad de ejecución el valor más restrictivo entre todos los puntos evaluados, garantizando así que el movimiento completo pueda realizarse sin saturar ningún motor.
+
+
+Con todo esto dicho, es posible crear un programa que calcule una solución numérica con un algoritmo de \textit{brute-force} que evalúe las trayectorias del tipo $(X_0,-100,Z_0) \to (X_0,100,Z_0)$ para todo el plano de trabajo $X$,$Z$  del robot.
+
+
+
+\section{Metodología para la Optimización de la Trayectoria}
+
+Para determinar la ubicación óptima que permita ejecutar una trayectoria rectilínea de 200\,mm en el menor tiempo posible (a velocidad constante), se implementó un método de barrido espacial (\textit{Grid Search}). Esta estrategia evalúa conceptualmente el espacio de trabajo del manipulador basándose en los siguientes principios:
+
+\subsection{Exploración del Espacio de Trabajo}
+Se define una cuadrícula de evaluación sobre el plano $XZ$ que abarca el volumen de alcance físico útil del robot. En cada coordenada de esta cuadrícula, se proyecta la trayectoria rectilínea deseada.
+
+\subsection{Análisis Cinemático Diferencial}
+Cada trayectoria propuesta se evalúa punto por punto a lo largo de su recorrido. Utilizando la matriz Jacobiana del robot, se relacionan los límites físicos de velocidad de cada motor con la velocidad cartesiana resultante en la herramienta. Esto permite identificar qué articulación se satura primero en cada instante, dictando la velocidad máxima posible en ese punto específico.
+
+\subsection{Restricción de Velocidad Constante}
+Dado que la consigna exige que la velocidad se mantenga constante durante los 200\,mm, la velocidad máxima admisible para una trayectoria entera queda estrictamente limitada por su ``punto más lento'' (el cuello de botella cinemático a lo largo de esa recta). El algoritmo registra y compara estas velocidades mínimas sostenibles para encontrar la ubicación global más rápida.
+
+
+\section{Resultados y análisis}
+
+
+

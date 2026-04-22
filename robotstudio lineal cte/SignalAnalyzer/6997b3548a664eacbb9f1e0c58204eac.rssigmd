@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Metadata Version="1">
+  <Id>6997b3548a664eacbb9f1e0c58204eac</Id>
+  <Name>Recording-28</Name>
+  <EventCount>277</EventCount>
+  <StartedUtc>2026-04-22T20:16:49.1899409Z</StartedUtc>
+  <EndedUtc>2026-04-22T20:16:51.0190332Z</EndedUtc>
+  <TotalTime>1.272</TotalTime>
+  <Signals>
+    <Signal index="0" id="RobotStudio.ControllerSource\{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\ROB_1\MotionSignal\9878" dataType="Number" displayPath="Controller Signals\#{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Speed In Current Wobj" interpolationType="Continuous" quantity="Velocity" tag="MotionSignal" />
+    <Signal index="1" id="RobotStudio.ControllerSource\{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\ROB_1\MotionSignal\9881" dataType="Number" displayPath="Controller Signals\#{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\X Position In Current Wobj" interpolationType="Continuous" quantity="Length" tag="MotionSignal" />
+    <Signal index="2" id="RobotStudio.ControllerSource\{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\ROB_1\MotionSignal\9882" dataType="Number" displayPath="Controller Signals\#{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\Y Position In Current Wobj" interpolationType="Continuous" quantity="Length" tag="MotionSignal" />
+    <Signal index="3" id="RobotStudio.ControllerSource\{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\ROB_1\MotionSignal\9883" dataType="Number" displayPath="Controller Signals\#{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\Z Position In Current Wobj" interpolationType="Continuous" quantity="Length" tag="MotionSignal" />
+    <Signal index="4" id="RobotStudio.ControllerSource\{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\ROB_1\MotionSignal\9875" dataType="String" displayPath="Controller Signals\#{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\Target\Target Changed" interpolationType="Discrete" quantity="None" tag="MotionSignal" />
+  </Signals>
+  <Sources>
+    <Source type="Station" id="{d783d424-aac3-413c-be8d-db03c1e2d4e1}" displayName="Project1" />
+  </Sources>
+</Metadata>
