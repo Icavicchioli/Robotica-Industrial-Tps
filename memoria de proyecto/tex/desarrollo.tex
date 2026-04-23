@@ -7,7 +7,16 @@ Inicialmente, como el problema así planteado es difícil de abordar, se simplif
 	\item Se desarrollará para X positivos.
 \end{itemize}
 
-Estas simplificaciones permiten desarrollar las consignas sin perder valor educativo y además permite hacer una demostración en vivo.
+Estas simplificaciones permiten desarrollar las consignas sin perder valor educativo y además permite hacer una demostración en vivo. La Figura \ref{fig:trayectorias verticales} ilustra las trayectorias propuestas.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./img/trayectorias.png}
+	\caption{Trayectorias horizontales a evaluar}
+	\label{fig:trayectorias verticales}
+\end{figure}
+
 
 \subsection{Teoría}
 
@@ -36,7 +45,21 @@ Suponiendo que el robot puede desarrollar sus velocidades articulares máximas, 
 
 Esto último parece bien conceptualmente, pero no se ajusta a la realidad, porque no tiene en cuenta que, si el robot se mueve a velocidad angular máxima siempre, la trayectoria que la herramienta desarrolle no va a ser lineal.
 
-Otra forma de encarar el problema es evaluar la trayectoria desde un enfoque cinemático diferencial (de a pedacitos), imponiendo directamente la condición de movimiento cartesiano rectilíneo y analizando las exigencias articulares que esto implica. En este sentido, para cada punto del recorrido se calcula, a partir de la inversa de la matriz Jacobiana, la velocidad angular que debe desarrollar cada articulación para sostener el avance en la dirección deseada. Estas velocidades requeridas se comparan con los límites máximos de cada actuador, identificando en cada instante cuál de ellos actúa como cuello de botella y, por lo tanto, fija la velocidad cartesiana máxima admisible en ese punto. Finalmente, dado que la consigna exige mantener velocidad constante a lo largo de toda la trayectoria, se adopta como velocidad de ejecución el valor más restrictivo entre todos los puntos evaluados, garantizando así que el movimiento completo pueda realizarse sin saturar ningún motor.
+Otra forma de encarar el problema es evaluar la trayectoria desde un enfoque cinemático diferencial (de a pedacitos), imponiendo directamente la condición de movimiento cartesiano rectilíneo y analizando las exigencias articulares que esto implica. En este sentido, para cada punto del recorrido se calcula, a partir de la inversa de la matriz Jacobiana, la velocidad angular que debe desarrollar cada articulación para sostener el avance en la dirección deseada a velocidad unitaria.
+
+\begin{equation}
+	\dot{\mathbf{q}} = \mathbf{J}(\mathbf{q})^{-1} \mathbf{v}
+\end{equation}
+
+\begin{equation}
+	\dot{\mathbf{q}}_{req} = | \mathbf{J}(\mathbf{q})^{-1} \mathbf{\hat{v}} |
+\end{equation}
+
+ Estas velocidades requeridas se comparan con los límites máximos de cada actuador, identificando en cada instante cuál de ellos actúa como cuello de botella y, por lo tanto, fija la velocidad cartesiana máxima admisible en ese punto. Finalmente, dado que la consigna exige mantener velocidad constante a lo largo de toda la trayectoria, se adopta como velocidad de ejecución el valor más restrictivo entre todos los puntos evaluados, garantizando así que el movimiento completo pueda realizarse sin saturar ningún motor. 
+
+\begin{equation}
+	v_{p} = \min_{i} \left( \frac{\dot{q}_{max,i}}{\dot{q}_{req,i}} \right)
+\end{equation}
 
 
 Con todo esto dicho, es posible crear un programa que calcule una solución numérica con un algoritmo de \textit{brute-force} que evalúe las trayectorias del tipo $(X_0,-100,Z_0) \to (X_0,100,Z_0)$ para todo el plano de trabajo $X$,$Z$  del robot.
@@ -48,7 +71,7 @@ Con todo esto dicho, es posible crear un programa que calcule una solución num�
 Para determinar la ubicación óptima que permita ejecutar una trayectoria rectilínea de 200\,mm en el menor tiempo posible (a velocidad constante), se implementó un método de barrido espacial (\textit{Grid Search}). Esta estrategia evalúa conceptualmente el espacio de trabajo del manipulador basándose en los siguientes principios:
 
 \subsection{Exploración del Espacio de Trabajo}
-Se define una cuadrícula de evaluación sobre el plano $XZ$ que abarca el volumen de alcance físico útil del robot. En cada coordenada de esta cuadrícula, se proyecta la trayectoria rectilínea deseada.
+Se define una cuadrícula de evaluación sobre el plano $YZ$ que abarca el volumen de alcance físico útil del robot. En cada coordenada de esta cuadrícula, se proyecta la trayectoria rectilínea deseada. Esto se realiza para distintos planos paralelos al YZ a diferentes distancias.
 
 \subsection{Análisis Cinemático Diferencial}
 Cada trayectoria propuesta se evalúa punto por punto a lo largo de su recorrido. Utilizando la matriz Jacobiana del robot, se relacionan los límites físicos de velocidad de cada motor con la velocidad cartesiana resultante en la herramienta. Esto permite identificar qué articulación se satura primero en cada instante, dictando la velocidad máxima posible en ese punto específico.
@@ -58,6 +81,25 @@ Dado que la consigna exige que la velocidad se mantenga constante durante los 20
 
 
 \section{Resultados y análisis}
+El algoritmo fue llevado a cabo para trayectorias horizontales para distintos planos paralelos al YZ como se indico en las secciones anteriores. La Figura \ref{fig:mapa_horizontal} presenta un mapa de calor de la velocidad máxima para cada trayectoria evaluada. A partir de los resultados del algoritmo, se observa que, para este tipo de trayectoria, la velocidad máxima alcanzable es de \SI{2,7}{m/s}, y se obtiene en la posición (\SI{775}{mm}, \SI{131}{mm}).
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{./img/mapa_calor_xz.png}
+		\caption{Mapa de calor de velocidades máximas para trayectorias horizontales}
+		\label{fig:mapa_horizontal}
+\end{figure}
+
+A fin de evaluar otras posibles trayectorias el algoritmo fue ejecutado pero para trayectorias verticales contenidas en el plano YZ. Similarmente, la Figura \ref{fig:mapa_vertical} muestra el mapa de calor obtenido. La velocidad máxima alcanzable es de \SI{2,25}{m/s}, y se obtiene en la posición (\SI{675}{mm}, \SI{-125}{mm}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./img/mapa_calor_verticales.png}
+	\caption{Mapa de calor de velocidades máximas para trayectorias verticales}
+	\label{fig:mapa_vertical}
+\end{figure}
 
 
+En el caso de trayectorias horizontales, el mapa de calor muestra que las trayectorias que pueden recorrerse en menor tiempo se concentran cuando el brazo del robot se encuentra casi completamente extendido y a alturas cercanas a la base. Este comportamiento resulta consistente, ya que la velocidad lineal aumenta con la distancia al eje de rotación. En consecuencia, los movimientos asociados al eje 1 generan un incremento significativo en la velocidad del extremo del brazo.
 
+Respecto de las trayectorias verticales, el comportamiento no resulta tan evidente. Los menores tiempos se obtienen cuando el brazo se encuentra considerablemente extendido y con una inclinación pronunciada hacia adelante. Asimismo, se observa que las velocidades alcanzadas son significativamente menores que en las trayectorias horizontales. Esto puede explicarse por el hecho de que este tipo de movimiento no requiere rotaciones del eje 1, por lo que no contribuye de manera significativa a la velocidad lineal.

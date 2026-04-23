@@ -6,5 +6,5 @@
 \contentsline {subsection}{\numberline {3.1}Exploración del Espacio de Trabajo}{2}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Análisis Cinemático Diferencial}{2}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Restricción de Velocidad Constante}{2}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Resultados y análisis}{2}{section.4}%
-\contentsline {section}{\numberline {5}Conclusiones}{2}{section.5}%
+\contentsline {section}{\numberline {4}Resultados y análisis}{3}{section.4}%
+\contentsline {section}{\numberline {5}Conclusiones}{3}{section.5}%
