@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.4)  24 APR 2026 18:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.4)  24 APR 2026 20:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -661,7 +661,19 @@ Package pdftex.def Info: ./img/mapa_calor_verticales.png  used on input line 97
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (tex/conclusiones.tex) [3 <./img/mapa_calor_xz.png>] (document.bbl
+[3 <./img/mapa_calor_xz.png>] [4 <./img/mapa_calor_verticales.png>]
+<img/Y vs t y velocidad.png, id=96, 714.7503pt x 860.013pt>
+File: img/Y vs t y velocidad.png Graphic file (type png)
+<use img/Y vs t y velocidad.png>
+Package pdftex.def Info: img/Y vs t y velocidad.png  used on input line 123.
+(pdftex.def)             Requested size: 338.58632pt x 407.40811pt.
+
+
+LaTeX Warning: Reference `' on page 5 undefined on input line 129.
+
+) (tex/conclusiones.tex) [5
+
+ <./img/Y vs t y velocidad.png>] [6] (document.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
@@ -670,7 +682,7 @@ Package natbib Warning: Empty `thebibliography' environment on input line 3.
 Package caption Warning: Unused \captionsetup[sub] on input line 36.
 See the caption package documentation for explanation.
 
-[4 <./img/mapa_calor_verticales.png>] (document.aux (tex/title.aux)
+[7] (document.aux (tex/title.aux)
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
 )
@@ -682,17 +694,20 @@ L3 programming layer <2026-01-19>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `document.out' has not changed.
 (rerunfilecheck)             Checksum: BB33B48EC9D946720F7B2BF4F327A2DA;776.
  ) 
 Here is how much of TeX's memory you used:
- 18112 strings out of 467866
- 353408 string characters out of 5420250
- 750290 words of memory out of 5000000
- 46765 multiletter control sequences out of 15000+600000
- 634063 words of font info for 63 fonts, out of 8000000 for 9000
+ 18156 strings out of 467866
+ 354129 string characters out of 5420250
+ 750364 words of memory out of 5000000
+ 46794 multiletter control sequences out of 15000+600000
+ 637483 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,12n,110p,590b,1063s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,12n,110p,765b,1061s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx
 10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmbx12.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
@@ -703,13 +718,15 @@ c/amsfonts/cm/cmcsc10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1
 type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/q/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/q/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/q/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/q/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/q/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on document.pdf (6 pages, 345844 bytes).
+MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/q/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/q/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/q/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/q/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/q/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on document.pdf (9 pages, 468060 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 34 named destinations out of 1000 (max. 500000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

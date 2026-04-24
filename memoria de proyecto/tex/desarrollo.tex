@@ -55,7 +55,7 @@ Otra forma de encarar el problema es evaluar la trayectoria desde un enfoque cin
 	\dot{\mathbf{q}}_{req} = | \mathbf{J}(\mathbf{q})^{-1} \mathbf{\hat{v}} |
 \end{equation}
 
- Estas velocidades requeridas se comparan con los límites máximos de cada actuador, identificando en cada instante cuál de ellos actúa como cuello de botella y, por lo tanto, fija la velocidad cartesiana máxima admisible en ese punto. Finalmente, dado que la consigna exige mantener velocidad constante a lo largo de toda la trayectoria, se adopta como velocidad de ejecución el valor más restrictivo entre todos los puntos evaluados, garantizando así que el movimiento completo pueda realizarse sin saturar ningún motor. 
+ Estas velocidades requeridas se comparan con los límites máximos de cada actuador, identificando en cada instante cuál de ellos actúa como cuello de botella y, por lo tanto, fija la velocidad cartesiana máxima admisible en ese punto. Finalmente, dado que la consigna exige mantener velocidad constante a lo largo de toda la trayectoria, se adopta como velocidad de ejecución el valor más restrictivo entre todos los puntos evaluados, garantizando así que el movimiento completo pueda realizarse sin saturar ningún motor.
 
 \begin{equation}
 	v_{p} = \min_{i} \left( \frac{\dot{q}_{max,i}}{\dot{q}_{req,i}} \right)
@@ -103,3 +103,32 @@ A fin de evaluar otras posibles trayectorias el algoritmo fue ejecutado pero par
 En el caso de trayectorias horizontales, el mapa de calor muestra que las trayectorias que pueden recorrerse en menor tiempo se concentran cuando el brazo del robot se encuentra casi completamente extendido y a alturas cercanas a la base. Este comportamiento resulta consistente, ya que la velocidad lineal aumenta con la distancia al eje de rotación. En consecuencia, los movimientos asociados al eje 1 generan un incremento significativo en la velocidad del extremo del brazo.
 
 Respecto de las trayectorias verticales, el comportamiento no resulta tan evidente. Los menores tiempos se obtienen cuando el brazo se encuentra considerablemente extendido y con una inclinación pronunciada hacia adelante. Asimismo, se observa que las velocidades alcanzadas son significativamente menores que en las trayectorias horizontales. Esto puede explicarse por el hecho de que este tipo de movimiento no requiere rotaciones del eje 1, por lo que no contribuye de manera significativa a la velocidad lineal.
+
+\clearpage
+
+La figura \ref{fig:y-vs-t-y-velocidad} muestra los resultados de la simulación realizada en \textit{RoboStudio}. El programa se mueve con un movimiento tipo \textit{joint} desde un punto alejado de la trayectoria hasta su inicio, luego hace un movimiento lineal sin limite de velocidad, y termina la secuencia volviendo al origen previamente mencionado; la secuencia se repite 2 veces. Se usó ``$z=$\textit{fine}'' para que la simulación respete el inicio y fin de la trayectoria. Se aclara que se eligió una terna de \textit{tool0} con un eje Z apuntando ``hacia abajo'' ya que no se supo como configurarla solidaria a la terna 3, que sería la más adecuada para como se resolvió el problema.
+
+La velocidad presenta un pico en la trayectoria lineal, que es razonable ya que el robot intenta moverse lo más rápido posible, pero su aceleración es finita. En términos físicos, es imposible lograr que la trayectoria se resuelva a velocidad constante si no se le da espacio para tomar carrera antes\footnote{Esto se probó pero no es posible para una trayectoria tan cerca del limite de la esfera de alcance del robot.}.
+
+La velocidad promedio medida es de \SI{487.1735}{\mm\per\s}, muy lejos de los \SI{2,7}{\m \per \s} calculados numéricamente. Dicho esto, la discrepancia es fácilmente explicable por 2 cosas:
+\begin{enumerate}
+	\item La simulación numérica realizada no contempla las mismas limitaciones que \textit{RoboStudio}.
+	\item El robot no tomó carrera antes; si se hace esto la velocidad aumenta drásticamente.
+\end{enumerate}
+
+En sí, el resultado es considerado adecuado y válido, para las limitaciones impuestas por nosotros mismos y la física del robot.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{img/Y vs t y velocidad}
+	\caption{Posición y velocidad en función del tiempo}
+	\label{fig:y-vs-t-y-velocidad}
+\end{figure}
+
+
+Ahora bien, para el caso de la trayectoria vertical, la simulación devolvió los datos de la imagen \ref{}. Se usaron las mismas configuraciones que antes.
+
+
+
+
+
