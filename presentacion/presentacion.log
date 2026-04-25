@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.4)  25 APR 2026 20:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.4)  25 APR 2026 20:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1332,7 +1332,23 @@ Overfull \vbox (12.70538pt too high) detected at line 197
 
  <../memoria de proyecto/img/Y vs t y velocidad.png>] [10
 
-] [11
+]
+<thumbnailver.png, id=92, 822.82407pt x 558.58687pt>
+File: thumbnailver.png Graphic file (type png)
+<use thumbnailver.png>
+Package pdftex.def Info: thumbnailver.png  used on input line 228.
+(pdftex.def)             Requested size: 255.73825pt x 173.61082pt.
+ [11
+
+ <./thumbnailver.png>]
+<thumbnailhor.png, id=100, 981.6675pt x 531.48563pt>
+File: thumbnailhor.png Graphic file (type png)
+<use thumbnailhor.png>
+Package pdftex.def Info: thumbnailhor.png  used on input line 239.
+(pdftex.def)             Requested size: 320.67087pt x 173.61082pt.
+ [12
+
+ <./thumbnailhor.png>] [13
 
 ]
 \tf@nav=\write6
@@ -1344,8 +1360,7 @@ Overfull \vbox (12.70538pt too high) detected at line 197
 \tf@snm=\write8
 \openout8 = `presentacion.snm'.
 
-
-(presentacion.aux
+ (presentacion.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -1357,10 +1372,10 @@ Package rerunfilecheck Info: File `presentacion.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32141 strings out of 467866
- 685386 string characters out of 5420250
+ 32163 strings out of 467866
+ 685776 string characters out of 5420250
  1190411 words of memory out of 5000000
- 60447 multiletter control sequences out of 15000+600000
+ 60465 multiletter control sequences out of 15000+600000
  634608 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,13n,123p,1881b,1054s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1376,9 +1391,9 @@ ts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/q/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/q/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/q/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on presentacion.pdf (11 pages, 1203399 bytes).
+Output written on presentacion.pdf (13 pages, 1947474 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 23 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 168 PDF objects out of 1000 (max. 8388607)
+ 27 named destinations out of 1000 (max. 500000)
+ 88 words of extra memory for PDF output out of 10000 (max. 10000000)
 

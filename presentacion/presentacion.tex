@@ -1,7 +1,7 @@
 \documentclass[10pt, aspectratio=169]{beamer}
 
 % --- Configuración de Tema Minimalista ---
-\usetheme{metropolis} 
+\usetheme{metropolis}
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamercolor{background canvas}{bg=white}
 
@@ -37,12 +37,12 @@
 %\titlegraphic{\hfill\includegraphics[height=1cm]{logo_fiuba.png}} % Descomentar si tenés el logo
 
 \begin{document}
-	
+
 	% --- Diapositiva 1: Portada ---
 	\begin{frame}
 		\titlepage
 	\end{frame}
-	
+
 	% --- Diapositiva 2: El Problema ---
 	\begin{frame}{El Problema: Optimización de Tiempo}
 		\begin{itemize}
@@ -50,14 +50,14 @@
 			\item \textbf{Restricción:} Velocidad cartesiana constante durante todo el recorrido.
 			\item \textbf{Plataforma:} Robot industrial ABB IRB 140.
 		\end{itemize}
-		
+
 		\begin{figure}
 			\centering
 			\includegraphics[width=0.5\textwidth]{ABB_IRB_140.png}
 			\caption{IRB 140.}
 		\end{figure}
 	\end{frame}
-	
+
 	% --- Diapositiva 3: Simplificaciones para el Análisis ---
 	\begin{frame}{Simplificaciones para el Análisis}
 		Para abordar la complejidad del espacio de trabajo, definimos:
@@ -70,7 +70,7 @@
 					\item \textbf{Trayectorias:} Comparación entre movimientos paralelos a los ejes $Y$ (Horizontales) y $Z$ (Verticales).
 				\end{itemize}
 			\end{column}
-			
+
 			\begin{column}{0.4\textwidth}
 				\begin{figure}
 					\centering
@@ -80,7 +80,7 @@
 			\end{column}
 		\end{columns}
 	\end{frame}
-	
+
 
 	% --- Diapositiva 4: Metodología: Grid Search ---
 	\begin{frame}{Metodología: Búsqueda por Grilla (Grid Search)}
@@ -88,7 +88,7 @@
 			\item Discretización del plano $XZ$ en una grilla de puntos de inicio potenciales.
 			\item Evaluación de cada trayectoria mediante un algoritmo iterativo.
 		\end{itemize}
-		
+
 		\begin{figure}
 			\centering
 			% Recordá ajustar la ruta si la imagen está en la carpeta de la memoria
@@ -96,15 +96,15 @@
 			\caption{Espacio de búsqueda discretizado para localizar el óptimo.}
 		\end{figure}
 	\end{frame}
-	
+
 	% --- Diapositiva 5: Metodología: El Cuello de Botella ---
 	\begin{frame}{Cálculo del Cuello de Botella Cinemático}
 		La velocidad máxima de la trayectoria está limitada por el eje que primero alcanza su límite operacional:
-		
+
 		\begin{equation*}
 			\dot{q} = J^{-1} \cdot \dot{x}
 		\end{equation*}
-		
+
 		\vspace{0.5cm}
 		\begin{itemize}
 			\item Se calcula la matriz \textbf{Jacobiana inversa} en cada punto de la recta.
@@ -112,7 +112,7 @@
 			\item \textbf{Resultado:} La velocidad permitida para la trayectoria es el valor mínimo hallado en todo el recorrido.
 		\end{itemize}
 	\end{frame}
-	
+
 	% --- Diapositiva 6: Resultados Horizontales ---
 	\begin{frame}{Resultados: Trayectorias Horizontales (Eje Y)}
 		\begin{columns}
@@ -134,8 +134,8 @@
 			\end{column}
 		\end{columns}
 	\end{frame}
-	
-	
+
+
 	% --- Diapositiva 7: Resultados Verticales ---
 	\begin{frame}{Resultados: Trayectorias Verticales (Eje Z)}
 		\begin{columns}
@@ -157,14 +157,14 @@
 			\end{column}
 		\end{columns}
 	\end{frame}
-	
+
 	% --- Diapositiva 8: Validación en RobotStudio ---
 	\begin{frame}{Validación en Entorno Virtual (RobotStudio)}
 		\begin{itemize}
 			\item Simulación de la trayectoria óptima en el controlador virtual de ABB.
 			\item Verificación de que los 6 ejes operan dentro de los rangos seguros sin singularidades.
 		\end{itemize}
-		
+
 		\vspace{0.2cm}
 		\begin{figure}
 			\centering
@@ -173,7 +173,7 @@
 			\caption{Validación de la trayectoria.}
 		\end{figure}
 	\end{frame}
-	
+
 	% --- Diapositiva 9: Análisis de Velocidad y Posición ---
 	\begin{frame}{Análisis de Trayectoria Horizontal: Velocidad y Posición}
 		\begin{columns}
@@ -184,7 +184,7 @@
 					\item \textbf{Cercanía a singularidades:} Zonas donde la configuración del brazo exige movimientos bruscos.
 				\end{itemize}
 			\end{column}
-			
+
 			\begin{column}{0.5\textwidth}
 				\begin{figure}
 					\centering
@@ -195,7 +195,7 @@
 			\end{column}
 		\end{columns}
 	\end{frame}
-	
+
 	% --- Diapositiva 10: Limitaciones del Entorno Real ---
 	\begin{frame}{Discrepancias: Modelo (3 GDL) vs. Realidad (6 GDL)}
 		\begin{block}{¿Por qué disminuye la velocidad en la simulación?}
@@ -205,14 +205,43 @@
 				\item \textbf{Restricción del controlador:} El entorno de programación no permite aislar los primeros 3 ejes.
 			\end{itemize}
 		\end{block}
-		
+
 		\vspace{0.3cm}
 		\begin{itemize}
 			\item \textbf{Validez del cálculo:} Los resultados numéricos siguen siendo válidos como techo teórico del sistema.
 			\item \textbf{Conclusión técnica:} El agregado de los 3 ejes extra y la dinámica real imponen las restricciones observadas.
 		\end{itemize}
 	\end{frame}
-	
+
+
+
+
+	% --- Horizontal ---
+	\begin{frame}{Movimiento Vertical}
+		\centering
+		\href{https://drive.google.com/file/d/1GM2blQ1xi5XzenOf_VVzfB6owfeFwqe5/preview}{
+			\includegraphics[height=0.75\textheight]{thumbnailver.png}
+		}
+
+		\vspace{0.5em}
+		\small Click para reproducir el video
+	\end{frame}
+
+	% --- Vertical ---
+	\begin{frame}{Movimiento Horizontal}
+		\centering
+		\href{https://drive.google.com/file/d/1BgFcqh8RINC6lT11EEQPpcjW3b-uaXks/preview}{
+			\includegraphics[height=0.75\textheight]{thumbnailhor.png}
+		}
+
+		\vspace{0.5em}
+		\small Click para reproducir el video
+	\end{frame}
+
+
+
+
+
 	% --- Diapositiva 11: Conclusiones ---
 	\begin{frame}{Conclusiones}
 		\begin{itemize}
@@ -221,5 +250,5 @@
 			\item \textbf{Limitaciones del modelo:} Quedó evidenciada la brecha entre el modelo cinemático ideal de 3 GDL y las restricciones físicas/dinámicas de un sistema de 6 GDL.
 		\end{itemize}
 	\end{frame}
-	
+
 \end{document}
