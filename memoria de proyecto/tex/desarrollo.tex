@@ -5,6 +5,7 @@ Inicialmente, como el problema así planteado es difícil de abordar, se simplif
 \begin{itemize}
 	\item La trayectoria rectilínea que se busca será paralela al eje $Y$ y simétrica respecto del plano $XZ$ del robot.
 	\item Se desarrollará para X positivos.
+	\item Para contrastar, también se evaluaran trayectorias paralelas al eje Z.
 \end{itemize}
 
 Estas simplificaciones permiten desarrollar las consignas sin perder valor educativo y además permite hacer una demostración en vivo. La Figura \ref{fig:trayectorias verticales} ilustra las trayectorias propuestas.
@@ -81,20 +82,22 @@ Dado que la consigna exige que la velocidad se mantenga constante durante los 20
 
 
 \section{Resultados y análisis}
-El algoritmo fue llevado a cabo para trayectorias horizontales para distintos planos paralelos al YZ como se indico en las secciones anteriores. La Figura \ref{fig:mapa_horizontal} presenta un mapa de calor de la velocidad máxima para cada trayectoria evaluada. A partir de los resultados del algoritmo, se observa que, para este tipo de trayectoria, la velocidad máxima alcanzable es de \SI{2,7}{m/s}, y se obtiene en la posición (\SI{775}{mm}, \SI{131}{mm}). La trayectoria se desarrollaría desde (\SI{775}{mm},\SI{100}{mm} \SI{131}{mm}) hasta (\SI{775}{mm},\SI{-100}{mm} \SI{131}{mm}) (o viceversa), respecto del origen de las diapositivas.
+
+\subsection{Búsqueda de trayectoria optima}
+El algoritmo fue llevado a cabo para trayectorias horizontales para distintos planos paralelos al YZ como se indico en las secciones anteriores. La Figura \ref{fig:mapa_horizontal} presenta un mapa de calor de la velocidad máxima para cada trayectoria evaluada. A partir de los resultados del algoritmo, se observa que, para este tipo de trayectoria, la velocidad máxima alcanzable es de \SI{2,7}{m/s}, y se obtiene en la posición (\SI{775}{mm}, \SI{131}{mm}). La trayectoria se desarrollaría desde (\SI{775}{mm}, \SI{100}{mm}, \SI{131}{mm}) hasta (\SI{775}{mm}, \SI{-100}{mm}, \SI{131}{mm}) (o viceversa), respecto del origen de las diapositivas.
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\textwidth]{./img/mapa_calor_xz.png}
+		\includegraphics[width=0.6\textwidth]{./img/mapa_calor_xz.png}
 		\caption{Mapa de calor de velocidades máximas para trayectorias horizontales}
 		\label{fig:mapa_horizontal}
 \end{figure}
 
 A fin de evaluar otras posibles trayectorias el algoritmo fue ejecutado pero para trayectorias verticales contenidas en el plano YZ. Similarmente, la Figura \ref{fig:mapa_vertical} muestra el mapa de calor obtenido. La velocidad máxima alcanzable es de \SI{2,25}{m/s}, y se obtiene en la posición (\SI{675}{mm}, \SI{-125}{mm}).
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./img/mapa_calor_verticales.png}
+	\includegraphics[width=0.6\textwidth]{./img/mapa_calor_verticales.png}
 	\caption{Mapa de calor de velocidades máximas para trayectorias verticales}
 	\label{fig:mapa_vertical}
 \end{figure}
@@ -104,10 +107,13 @@ En el caso de trayectorias horizontales, el mapa de calor muestra que las trayec
 
 Respecto de las trayectorias verticales, el comportamiento no resulta tan evidente. Los menores tiempos se obtienen cuando el brazo se encuentra considerablemente extendido y con una inclinación pronunciada hacia adelante. Asimismo, se observa que las velocidades alcanzadas son significativamente menores que en las trayectorias horizontales. Esto puede explicarse por el hecho de que este tipo de movimiento no requiere rotaciones del eje 1, por lo que no contribuye de manera significativa a la velocidad lineal.
 
+
 \clearpage
 
+\subsection{Simulación de la trayectoria}
+
 La figura \ref{fig:y-vs-t-y-velocidad} muestra los resultados de la simulación realizada en \textit{RobotStudio}. El programa se mueve con un movimiento tipo \textit{joint} desde un punto alejado de la trayectoria hasta su inicio, luego hace un movimiento lineal sin limite de velocidad, y termina la secuencia volviendo al origen previamente mencionado; la secuencia se repite 2 veces.
-La trayectoria va desde (\SI{845}{mm},\SI{100}{mm}, \SI{483}{mm}) hasta (\SI{845}{mm},\SI{-100}{mm}, \SI{483}{mm})\footnote{Se sumó (\SI{70}{mm},\SI{0}{mm} \SI{352}{mm}) para ajustar por la diferencia de orígenes}. Se usó ``$z=$\textit{fine}'' para que la simulación respete el inicio y fin de la trayectoria. Se aclara que el movimiento se realizó en una terna extrañamente inclinada porque el robot no se movía en todo el rango con otras configuraciones.
+La trayectoria va desde (\SI{845}{mm}, \SI{100}{mm}, \SI{483}{mm}) hasta (\SI{845}{mm}, \SI{-100}{mm}, \SI{483}{mm})\footnote{Se sumó (\SI{70}{mm}, \SI{0}{mm}, \SI{352}{mm}) para ajustar por la diferencia de orígenes}. Se usó ``$z=$\textit{fine}'' para que la simulación respete el inicio y fin de la trayectoria. Se aclara que el movimiento se realizó en una terna extrañamente inclinada porque el robot no se movía en todo el rango con otras configuraciones.
 
 \begin{figure}[h!]
 	\centering
@@ -142,7 +148,7 @@ Con todo esto dicho, no resulta adecuado definir una velocidad de trayectoria. S
 
 
 
-Ahora bien, para el caso de la trayectoria vertical, la simulación devolvió los datos de la imagen \ref{fig:verticaul}. Se usaron las mismas configuraciones que antes. La trayectoria va desde (\SI{745}{mm},\SI{0}{mm} \SI{127}{mm}) hasta (\SI{745}{mm},\SI{0}{mm} \SI{327}{mm}). Es decir, sobre el plano XZ de $Y=0$ se desplaza hacia arriba y abajo con X constante.
+Ahora bien, para el caso de la trayectoria vertical, la simulación devolvió los datos de la imagen \ref{fig:verticaul}. Se usaron las mismas configuraciones que antes. La trayectoria va desde (\SI{745}{mm}, \SI{0}{mm}, \SI{127}{mm}) hasta (\SI{745}{mm}, \SI{0}{mm}, \SI{327}{mm}). Es decir, sobre el plano XZ de $Y=0$ se desplaza hacia arriba y abajo con X constante.
 
 \begin{figure}[h!]
 	\centering
@@ -165,3 +171,5 @@ llegando a \SI{1654}{\milli\meter\per\second}.
 No se observan anomalías ni efectos asociados a singularidades (a diferencia de antes), lo cual indica que la trayectoria no presenta dificultades cinemáticas relevantes. Asimismo, la velocidad no es constante, lo cual es consistente con un movimiento real en el que existen fases de aceleración y desaceleración.
 
 Esta simulación no anula ni disminuye el valor de los resultados numéricos obtenidos, sino que le suma el aspecto real de la cinemática del robot.
+
+\clearpage

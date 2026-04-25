@@ -1,3 +1,13 @@
 \section{Conclusiones}
 
+El estudio realizado permitió determinar las ubicaciones óptimas para la ejecución de trayectorias rectilíneas de alta velocidad, validando la eficacia del análisis cinemático diferencial y el método \textit{Grid Search}. A partir de los resultados obtenidos, se extraen las siguientes conclusiones principales:
 
+\begin{itemize}
+	\item \textbf{Desempeño según la orientación:} Las trayectorias horizontales demostraron una capacidad de velocidad superior ($2,7$~m/s) en comparación con las verticales ($2,25$~m/s). Esto confirma que el aprovechamiento del primer eje en configuraciones de brazo extendido maximiza la velocidad lineal en el extremo, mientras que los movimientos verticales dependen de articulaciones con menor contribución vectorial al avance.
+	
+	\item \textbf{Criterio de optimización:} El uso de la matriz Jacobiana inversa resultó fundamental para identificar los ``cuellos de botella'' cinemáticos. Se determinó que la velocidad máxima constante de una trayectoria está estrictamente limitada por la articulación que alcanza primero su saturación en el punto más restrictivo del recorrido.
+	
+	\item \textbf{Discrepancia entre modelo y realidad:} La implementación en \textit{RobotStudio} reveló una diferencia crítica entre el modelo teórico de 3 GDL y la operación real de un manipulador de 6 GDL. Se observó que la imposibilidad de desacoplar la orientación de la traslación introduce reducciones de velocidad no previstas en el cálculo numérico, especialmente al operar cerca de singularidades que exigen reconfiguraciones de la muñeca.
+	
+	\item \textbf{Validación del método:} A pesar de las restricciones impuestas por el entorno de simulación, los mapas de calor resultaron una herramienta de gran utilidad. Los resultados numéricos conservan su validez para el análisis de los ejes principales.
+\end{itemize}

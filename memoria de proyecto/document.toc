@@ -7,4 +7,6 @@
 \contentsline {subsection}{\numberline {3.2}Análisis Cinemático Diferencial}{2}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Restricción de Velocidad Constante}{2}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Resultados y análisis}{3}{section.4}%
-\contentsline {section}{\numberline {5}Conclusiones}{6}{section.5}%
+\contentsline {subsection}{\numberline {4.1}Búsqueda de trayectoria optima}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Simulación de la trayectoria}{5}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Conclusiones}{9}{section.5}%
