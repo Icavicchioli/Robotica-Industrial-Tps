@@ -1,0 +1,25 @@
+\frametitle{Simplificaciones para el Análisis}
+Para abordar la complejidad del espacio de trabajo, definimos:
+		\vspace{0.3cm}
+		\begin{columns}
+			\begin{column}{0.55\textwidth}
+				\begin{itemize}
+					\item \textbf{Reducción a 3 GDL:} Se analiza únicamente la traslación de la muñeca (primeros tres ejes).
+					\item \textbf{Simetría:} Búsqueda en el plano $XZ$ (aprovechando simetría del robot).
+					\item \textbf{Trayectorias:} Comparación entre movimientos paralelos a los ejes $Y$ (Horizontales) y $Z$ (Verticales).
+				\end{itemize}
+			\end{column}
+			
+			\begin{column}{0.45\textwidth}
+				\begin{block}{Definición del Robot en Python}
+					\begin{lstlisting}
+						irb140 = rtb.DHRobot([
+						rtb.RevoluteDH(alpha=-np.pi/2, a=70),
+						rtb.RevoluteDH(a=360),
+						rtb.RevoluteDH(alpha=np.pi/2),
+						rtb.RevoluteDH(d=380, alpha=-np.pi/2),
+						], name="IRB140_Posicion")
+					\end{lstlisting}
+				\end{block}
+			\end{column}
+		\end{columns}
