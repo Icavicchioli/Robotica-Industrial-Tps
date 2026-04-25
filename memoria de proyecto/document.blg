@@ -9,7 +9,7 @@ Illegal, another \bibstyle command---line 12 of file document.aux
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: tex/title.aux
-Illegal, another \bibstyle command---line 29 of file document.aux
+Illegal, another \bibstyle command---line 35 of file document.aux
  : \bibstyle
  :          {ieeetr}
 I'm skipping whatever remains of this command

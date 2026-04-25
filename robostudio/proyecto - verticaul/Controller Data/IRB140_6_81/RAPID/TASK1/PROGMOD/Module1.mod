@@ -23,8 +23,9 @@ MODULE Module1
     !
     !***********************************************************
     PROC Path_10()
-        MoveJ [[775,100,131],[0,0,1,0],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]],v500,fine,tool0\WObj:=wobj0;
-        MoveL [[775,-100,131],[0,0,1,0],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]],vmax,fine,tool0\WObj:=wobj0;
-        MoveJ Target_30,v500,z50,tool0\WObj:=wobj0;
+        MoveJ Target_30,v500,fine,tool0\WObj:=wobj0;
+        MoveJ [[745,0,327],[0,0,1,0],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]],v500,fine,tool0\WObj:=wobj0;
+        MoveL [[745.000006595,0,127.000029993],[0.000000038,0,1,0],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]],vmax,fine,tool0\WObj:=wobj0;
+        MoveJ Target_30,v500,z0,tool0\WObj:=wobj0;
     ENDPROC
 ENDMODULE

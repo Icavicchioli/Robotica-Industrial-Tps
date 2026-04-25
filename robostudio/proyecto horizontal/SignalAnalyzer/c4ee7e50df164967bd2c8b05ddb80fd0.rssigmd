@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Metadata Version="1">
+  <Id>c4ee7e50df164967bd2c8b05ddb80fd0</Id>
+  <Name>Recording-2</Name>
+  <EventCount>1762</EventCount>
+  <StartedUtc>2026-04-25T00:15:44.6096487Z</StartedUtc>
+  <EndedUtc>2026-04-25T00:15:52.8193657Z</EndedUtc>
+  <TotalTime>6.936</TotalTime>
+  <Signals>
+    <Signal index="0" id="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\JointSignal\J1" dataType="Number" displayPath="Controller Signals\#{60A55866-41FB-4FBD-BE00-C592EABCDACE}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\Joint\J1" interpolationType="Continuous" quantity="Angle" tag="JointSignal" />
+    <Signal index="1" id="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\JointSignal\J2" dataType="Number" displayPath="Controller Signals\#{60A55866-41FB-4FBD-BE00-C592EABCDACE}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\Joint\J2" interpolationType="Continuous" quantity="Angle" tag="JointSignal" />
+    <Signal index="2" id="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\JointSignal\J3" dataType="Number" displayPath="Controller Signals\#{60A55866-41FB-4FBD-BE00-C592EABCDACE}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\Joint\J3" interpolationType="Continuous" quantity="Angle" tag="JointSignal" />
+    <Signal index="3" id="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9881" dataType="Number" displayPath="Controller Signals\#{666D30BB-668A-4538-802C-437A892FB238}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\X Position In Current Wobj" interpolationType="Continuous" quantity="Length" tag="MotionSignal" />
+    <Signal index="4" id="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9882" dataType="Number" displayPath="Controller Signals\#{666D30BB-668A-4538-802C-437A892FB238}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\Y Position In Current Wobj" interpolationType="Continuous" quantity="Length" tag="MotionSignal" />
+    <Signal index="5" id="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9883" dataType="Number" displayPath="Controller Signals\#{666D30BB-668A-4538-802C-437A892FB238}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\Z Position In Current Wobj" interpolationType="Continuous" quantity="Length" tag="MotionSignal" />
+  </Signals>
+  <Sources>
+    <Source type="Station" id="{d783d424-aac3-413c-be8d-db03c1e2d4e1}" displayName="proyecto" />
+  </Sources>
+</Metadata>

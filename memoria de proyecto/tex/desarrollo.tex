@@ -81,7 +81,7 @@ Dado que la consigna exige que la velocidad se mantenga constante durante los 20
 
 
 \section{Resultados y análisis}
-El algoritmo fue llevado a cabo para trayectorias horizontales para distintos planos paralelos al YZ como se indico en las secciones anteriores. La Figura \ref{fig:mapa_horizontal} presenta un mapa de calor de la velocidad máxima para cada trayectoria evaluada. A partir de los resultados del algoritmo, se observa que, para este tipo de trayectoria, la velocidad máxima alcanzable es de \SI{2,7}{m/s}, y se obtiene en la posición (\SI{775}{mm}, \SI{131}{mm}).
+El algoritmo fue llevado a cabo para trayectorias horizontales para distintos planos paralelos al YZ como se indico en las secciones anteriores. La Figura \ref{fig:mapa_horizontal} presenta un mapa de calor de la velocidad máxima para cada trayectoria evaluada. A partir de los resultados del algoritmo, se observa que, para este tipo de trayectoria, la velocidad máxima alcanzable es de \SI{2,7}{m/s}, y se obtiene en la posición (\SI{775}{mm}, \SI{131}{mm}). La trayectoria se desarrollaría desde (\SI{775}{mm},\SI{100}{mm} \SI{131}{mm}) hasta (\SI{775}{mm},\SI{-100}{mm} \SI{131}{mm}) (o viceversa), respecto del origen de las diapositivas.
 
 \begin{figure}[H]
 		\centering
@@ -106,29 +106,62 @@ Respecto de las trayectorias verticales, el comportamiento no resulta tan eviden
 
 \clearpage
 
-La figura \ref{fig:y-vs-t-y-velocidad} muestra los resultados de la simulación realizada en \textit{RoboStudio}. El programa se mueve con un movimiento tipo \textit{joint} desde un punto alejado de la trayectoria hasta su inicio, luego hace un movimiento lineal sin limite de velocidad, y termina la secuencia volviendo al origen previamente mencionado; la secuencia se repite 2 veces. Se usó ``$z=$\textit{fine}'' para que la simulación respete el inicio y fin de la trayectoria. Se aclara que se eligió una terna de \textit{tool0} con un eje Z apuntando ``hacia abajo'' ya que no se supo como configurarla solidaria a la terna 3, que sería la más adecuada para como se resolvió el problema.
+La figura \ref{fig:y-vs-t-y-velocidad} muestra los resultados de la simulación realizada en \textit{RobotStudio}. El programa se mueve con un movimiento tipo \textit{joint} desde un punto alejado de la trayectoria hasta su inicio, luego hace un movimiento lineal sin limite de velocidad, y termina la secuencia volviendo al origen previamente mencionado; la secuencia se repite 2 veces.
+La trayectoria va desde (\SI{845}{mm},\SI{100}{mm}, \SI{483}{mm}) hasta (\SI{845}{mm},\SI{-100}{mm}, \SI{483}{mm})\footnote{Se sumó (\SI{70}{mm},\SI{0}{mm} \SI{352}{mm}) para ajustar por la diferencia de orígenes}. Se usó ``$z=$\textit{fine}'' para que la simulación respete el inicio y fin de la trayectoria. Se aclara que el movimiento se realizó en una terna extrañamente inclinada porque el robot no se movía en todo el rango con otras configuraciones.
 
-La velocidad presenta un pico en la trayectoria lineal, que es razonable ya que el robot intenta moverse lo más rápido posible, pero su aceleración es finita. En términos físicos, es imposible lograr que la trayectoria se resuelva a velocidad constante si no se le da espacio para tomar carrera antes\footnote{Esto se probó pero no es posible para una trayectoria tan cerca del limite de la esfera de alcance del robot.}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{img/robot img horizontal}
+	\caption{Robot con sus ternas en \textit{RobotStudio} - movimiento horizontal}
+	\label{fig:robot-img-horizontal}
+\end{figure}
 
-La velocidad promedio medida es de \SI{487.1735}{\mm\per\s}, muy lejos de los \SI{2,7}{\m \per \s} calculados numéricamente. Dicho esto, la discrepancia es fácilmente explicable por 2 cosas:
-\begin{enumerate}
-	\item La simulación numérica realizada no contempla las mismas limitaciones que \textit{RoboStudio}.
-	\item El robot no tomó carrera antes; si se hace esto la velocidad aumenta drásticamente.
-\end{enumerate}
-
-En sí, el resultado es considerado adecuado y válido, para las limitaciones impuestas por nosotros mismos y la física del robot.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{img/Y vs t y velocidad}
-	\caption{Posición y velocidad en función del tiempo}
+	\caption{Posición y velocidad en función del tiempo - movimiento horizontal}
 	\label{fig:y-vs-t-y-velocidad}
 \end{figure}
 
+Algo interesante que se observa en el gráfico de velocidad en \ref{fig:y-vs-t-y-velocidad} es que, si bien la velocidad aumenta de manera razonable al inicio del movimiento, luego disminuye y posteriormente vuelve a incrementarse.
 
-Ahora bien, para el caso de la trayectoria vertical, la simulación devolvió los datos de la imagen \ref{}. Se usaron las mismas configuraciones que antes.
+Parecería que el movimiento se realiza en cercanías de una singularidad. En esa región, el robot comienza el desplazamiento normalmente, pero al intentar continuar hacia el siguiente punto, se ve obligado a ralentizar el movimiento cartesiano debido a la necesidad de reconfigurar la orientación mediante la rotación de alguno de sus ejes.
+
+Este problema fundamental puede atribuirse a los siguientes factores:
+
+\begin{itemize}
+	\item No parece existir posibilidad de definir un movimiento lineal puramente traslacional que ignore la orientación. Es decir, cualquier movimiento cartesiano en el espacio requiere necesariamente la especificación de una orientación asociada. No es posible desplazarse únicamente en términos de posición $(x,y,z)$ sin considerar la rotación.
+
+	\item Esta restricción constituye una limitación tanto del robot como del entorno de programación, y no se condice con el planteo original del problema, en el cual solo se consideran los primeros tres ejes. En dicho planteo, la orientación es irrelevante, lo cual no puede replicarse en la simulación.
+
+	\item Se está trabajando con un manipulador de seis grados de libertad y no es posible forzar al sistema a operar únicamente con los primeros tres ejes.
+\end{itemize}
+
+Con todo esto dicho, no resulta adecuado definir una velocidad de trayectoria. Sin embargo, esto no invalida los resultados numéricos obtenidos previamente, ya que dichos resultados corresponden al análisis de los primeros tres ejes. Las simulaciones solo denotan que el agregado de los tres ejes extra, junto con las restricciones propias del robot, imposibilita la resolución directa de este problema en un entorno realista.
 
 
 
+Ahora bien, para el caso de la trayectoria vertical, la simulación devolvió los datos de la imagen \ref{fig:verticaul}. Se usaron las mismas configuraciones que antes. La trayectoria va desde (\SI{745}{mm},\SI{0}{mm} \SI{127}{mm}) hasta (\SI{745}{mm},\SI{0}{mm} \SI{327}{mm}). Es decir, sobre el plano XZ de $Y=0$ se desplaza hacia arriba y abajo con X constante.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{img/robot img vertical}
+	\caption{Robot con sus ternas en \textit{RobotStudio} - movimiento vertical}
+	\label{fig:robot-img-vertical}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{img/verticaul}
+	\caption{Posición y velocidad en función del tiempo - movimiento vertical}
+	\label{fig:verticaul}
+\end{figure}
 
 
+Dado que se trata de un movimiento puramente vertical, se tiene $x = \text{cte}$ e $y = \text{cte}$, variando únicamente la coordenada $z$. En este contexto, el valor máximo de velocidad se alcanza durante el tramo intermedio del movimiento,
+llegando a \SI{1654}{\milli\meter\per\second}.
+
+No se observan anomalías ni efectos asociados a singularidades (a diferencia de antes), lo cual indica que la trayectoria no presenta dificultades cinemáticas relevantes. Asimismo, la velocidad no es constante, lo cual es consistente con un movimiento real en el que existen fases de aceleración y desaceleración.
+
+Esta simulación no anula ni disminuye el valor de los resultados numéricos obtenidos, sino que le suma el aspecto real de la cinemática del robot.

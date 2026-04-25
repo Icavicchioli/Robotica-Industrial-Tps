@@ -10,6 +10,16 @@
             <String Value="&lt;SimulationWatch /&gt;" />
           </Value>
         </Attribute>
+        <Attribute Key="&lt;815b341d-1754-4668-a08f-30fe79a7ebf7&gt;SavedState.back">
+          <Value>
+            <String Value="&lt;ProjectState name=&quot;back&quot; description=&quot;&quot; date=&quot;2026-04-24T21:01:48.5527254-03:00&quot;&gt;&#xD;&#xA;  &lt;ObjectStates&gt;&#xD;&#xA;    &lt;StandardState objectId=&quot;{46d52f9b-e00e-4acf-b4c4-d5f194b78ef6}&quot;&gt;&#xD;&#xA;      &lt;Transform matrix=&quot;[[1 0 0 0] [0 1 0 0] [0 0 1 0] [0 0 0 1]]&quot; /&gt;&#xD;&#xA;      &lt;AttachmentParent parentId=&quot;&quot; matrix=&quot;&quot; /&gt;&#xD;&#xA;      &lt;Visible value=&quot;True&quot; /&gt;&#xD;&#xA;      &lt;JointValues values=&quot;-8.67361686289615E-19 0.506550312042236 -0.274763554334641 1.38777869806338E-17 -0.231786742806435 1.57079637050629 &quot; /&gt;&#xD;&#xA;    &lt;/StandardState&gt;&#xD;&#xA;    &lt;ControllerState objectId=&quot;{86050d06-8013-427a-8076-2916f12aa5a2}&quot;&gt;&#xD;&#xA;      &lt;PersVariabel symbolURL=&quot;/RAPID/T_ROB1/BASE/load0&quot; value=&quot;[0.001,[0,0,0.001],[1,0,0,0],0,0,0]&quot; /&gt;&#xD;&#xA;      &lt;PersVariabel symbolURL=&quot;/RAPID/T_ROB1/BASE/wobj0&quot; value=&quot;[FALSE,TRUE,&amp;quot;&amp;quot;,[[0,0,0],[1,0,0,0]],[[0,0,0],[1,0,0,0]]]&quot; /&gt;&#xD;&#xA;      &lt;PersVariabel symbolURL=&quot;/RAPID/T_ROB1/BASE/tool0&quot; value=&quot;[TRUE,[[0,0,0],[1,0,0,0]],[0.001,[0,0,0.001],[1,0,0,0],0,0,0]]&quot; /&gt;&#xD;&#xA;    &lt;/ControllerState&gt;&#xD;&#xA;    &lt;StandardState objectId=&quot;{5a19ef5b-020a-4eb6-9877-69e5bdd855b0}&quot;&gt;&#xD;&#xA;      &lt;PhysicsMotionControl value=&quot;None&quot; /&gt;&#xD;&#xA;      &lt;Visible value=&quot;True&quot; /&gt;&#xD;&#xA;    &lt;/StandardState&gt;&#xD;&#xA;    &lt;StandardState objectId=&quot;{b3e0bfa8-7e8b-44b0-b4d0-6539cab3ea41}&quot;&gt;&#xD;&#xA;      &lt;PhysicsMotionControl value=&quot;None&quot; /&gt;&#xD;&#xA;      &lt;Visible value=&quot;True&quot; /&gt;&#xD;&#xA;    &lt;/StandardState&gt;&#xD;&#xA;    &lt;StandardState objectId=&quot;{ccc52a3d-f87d-433d-b546-6e7b82dbafce}&quot;&gt;&#xD;&#xA;      &lt;PhysicsMotionControl value=&quot;None&quot; /&gt;&#xD;&#xA;      &lt;Visible value=&quot;True&quot; /&gt;&#xD;&#xA;    &lt;/StandardState&gt;&#xD;&#xA;    &lt;StandardState objectId=&quot;{385ec1b5-c221-426a-9569-842c62906c31}&quot;&gt;&#xD;&#xA;      &lt;PhysicsMotionControl value=&quot;None&quot; /&gt;&#xD;&#xA;      &lt;Visible value=&quot;True&quot; /&gt;&#xD;&#xA;    &lt;/StandardState&gt;&#xD;&#xA;    &lt;StandardState objectId=&quot;{63f5f370-84b6-46e7-a5ad-15fce7d7f6a3}&quot;&gt;&#xD;&#xA;      &lt;PhysicsMotionControl value=&quot;None&quot; /&gt;&#xD;&#xA;      &lt;Visible value=&quot;True&quot; /&gt;&#xD;&#xA;    &lt;/StandardState&gt;&#xD;&#xA;    &lt;StandardState objectId=&quot;{45663602-cf48-4d85-9bf7-ab24acffae3f}&quot;&gt;&#xD;&#xA;      &lt;PhysicsMotionControl value=&quot;None&quot; /&gt;&#xD;&#xA;      &lt;Visible value=&quot;True&quot; /&gt;&#xD;&#xA;    &lt;/StandardState&gt;&#xD;&#xA;    &lt;StandardState objectId=&quot;{645dd984-3620-4c8d-9727-cd516d97b838}&quot;&gt;&#xD;&#xA;      &lt;PhysicsMotionControl value=&quot;None&quot; /&gt;&#xD;&#xA;      &lt;Visible value=&quot;True&quot; /&gt;&#xD;&#xA;    &lt;/StandardState&gt;&#xD;&#xA;  &lt;/ObjectStates&gt;&#xD;&#xA;&lt;/ProjectState&gt;" />
+          </Value>
+        </Attribute>
+        <Attribute Key="&lt;815b341d-1754-4668-a08f-30fe79a7ebf7&gt;SavedStates">
+          <Value>
+            <String Value="back" />
+          </Value>
+        </Attribute>
       </Attributes>
       <UniqueId Value="{d783d424-aac3-413c-be8d-db03c1e2d4e1}" />
       <AssemblyRootRef ID="1258" />
@@ -18,13 +28,10 @@
       <SimulationRootRef ID="2" />
       <PhysicsSimulationProperties Gravity="9.81" Floor="true" FloorHeight="0" />
       <DataRecorderSignals>
-        <ObjectRef ID="2474" />
-        <ObjectRef ID="2475" />
-        <ObjectRef ID="2476" />
-        <ObjectRef ID="2477" />
-        <ObjectRef ID="2516" />
-        <ObjectRef ID="2517" />
-        <ObjectRef ID="2518" />
+        <ObjectRef ID="2519" />
+        <ObjectRef ID="2520" />
+        <ObjectRef ID="2521" />
+        <ObjectRef ID="2522" />
       </DataRecorderSignals>
       <UserData Value="" />
     </Station>
@@ -7746,12 +7753,12 @@
       <ComponentType Value="Mechanism" />
       <ClipPlane ID="-1" />
       <JointValues>
-        <Double Value="0.128323212265968" />
-        <Double Value="1.60388565063477" />
-        <Double Value="-1.21497130393982" />
-        <Double Value="0" />
-        <Double Value="1.18188190460205" />
-        <Double Value="0.128323256969452" />
+        <Double Value="-0.128075271844864" />
+        <Double Value="1.2071795463562" />
+        <Double Value="-1.21119666099548" />
+        <Double Value="-1.43688726425171" />
+        <Double Value="-0.136206164956093" />
+        <Double Value="2.70538377761841" />
       </JointValues>
       <CalibFrames />
       <CalibFrameKnownValid />
@@ -7763,6 +7770,7 @@
       <JointModelOffset />
     </MechanismInstance>
     <MechanismLinkInstance ID="2340" Name="Base" Parent="2339" PickingEnabled="true" Detectable="true" PhysicsMotionControl="0">
+      <UniqueId Value="{5a19ef5b-020a-4eb6-9877-69e5bdd855b0}" />
       <Definition ID="13" DocID="1" />
       <Transform>
         <RowX X="1" Y="0" Z="0" W="0" />
@@ -7792,10 +7800,11 @@
       </CorrectionTransform>
     </MechanismLinkInstance>
     <MechanismLinkInstance ID="2341" Name="Link1" Parent="2339" PickingEnabled="true" Detectable="true" PhysicsMotionControl="0">
+      <UniqueId Value="{b3e0bfa8-7e8b-44b0-b4d0-6539cab3ea41}" />
       <Definition ID="14" DocID="1" />
       <Transform>
-        <RowX X="0.999235959475808" Y="0.0390832098280147" Z="0" W="0" />
-        <RowY X="-0.0390832098280147" Y="0.999235959475808" Z="0" W="0" />
+        <RowX X="0.991809567386045" Y="-0.127725416583806" Z="0" W="0" />
+        <RowY X="0.127725416583806" Y="0.991809567386045" Z="0" W="0" />
         <RowZ X="0" Y="0" Z="1" W="0" />
         <RowT X="0" Y="0" Z="0" W="1" />
       </Transform>
@@ -7821,12 +7830,13 @@
       </CorrectionTransform>
     </MechanismLinkInstance>
     <MechanismLinkInstance ID="2342" Name="Link2" Parent="2339" PickingEnabled="true" Detectable="true" PhysicsMotionControl="0">
+      <UniqueId Value="{ccc52a3d-f87d-433d-b546-6e7b82dbafce}" />
       <Definition ID="15" DocID="1" />
       <Transform>
-        <RowX X="0.882307988496414" Y="0.0345097951292976" Z="-0.469405674737264" W="0" />
-        <RowY X="-0.0390832098280147" Y="0.999235959475808" Z="0" W="0" />
-        <RowZ X="0.469047029779479" Y="0.0183458804802204" Z="0.882982623002544" W="0" />
-        <RowT X="-0.156919596513819" Y="-0.00613761090012738" Z="0.0740485139347128" W="1" />
+        <RowX X="0.352743871649144" Y="-0.0454264199855596" Z="-0.93461660662609" W="0" />
+        <RowY X="0.127725416583806" Y="0.991809567386045" Z="0" W="0" />
+        <RowZ X="0.926961692289636" Y="-0.119374295427459" Z="0.355656855154983" W="0" />
+        <RowT X="-0.281555916984369" Y="0.0362588222285883" Z="0.292231949449272" W="1" />
       </Transform>
       <Source Value="" />
       <SourceFileTime HighPart="0" LowPart="0" />
@@ -7850,12 +7860,13 @@
       </CorrectionTransform>
     </MechanismLinkInstance>
     <MechanismLinkInstance ID="2343" Name="Link3" Parent="2339" PickingEnabled="true" Detectable="true" PhysicsMotionControl="0">
+      <UniqueId Value="{385ec1b5-c221-426a-9569-842c62906c31}" />
       <Definition ID="16" DocID="1" />
       <Transform>
-        <RowX X="0.992230623307327" Y="0.0388092094572388" Z="-0.1182042107222" W="0" />
-        <RowY X="-0.0390832098280147" Y="0.999235959475808" Z="0" W="0" />
-        <RowZ X="0.118113897915078" Y="0.00461979997021406" Z="0.992989307378253" W="0" />
-        <RowT X="0.085250208936871" Y="0.00333439942004124" Z="-0.0288603478218459" W="1" />
+        <RowX X="0.991801564877159" Y="-0.127724386019255" Z="0.00401710383512027" W="0" />
+        <RowY X="0.127725416583806" Y="0.991809567386045" Z="0" W="0" />
+        <RowZ X="-0.00398420201685507" Y="0.000513086260804603" Z="0.999991931405838" W="0" />
+        <RowT X="0.336543521235892" Y="-0.0433401359110966" Z="-0.232238984573621" W="1" />
       </Transform>
       <Source Value="" />
       <SourceFileTime HighPart="0" LowPart="0" />
@@ -7879,12 +7890,13 @@
       </CorrectionTransform>
     </MechanismLinkInstance>
     <MechanismLinkInstance ID="2344" Name="Link4" Parent="2339" PickingEnabled="true" Detectable="true" PhysicsMotionControl="0">
+      <UniqueId Value="{63f5f370-84b6-46e7-a5ad-15fce7d7f6a3}" />
       <Definition ID="17" DocID="1" />
       <Transform>
-        <RowX X="0.992230623307327" Y="0.0388092094572353" Z="-0.1182042107222" W="0" />
-        <RowY X="-0.0390832098280108" Y="0.999235959475808" Z="0" W="0" />
-        <RowZ X="0.118113897915078" Y="0.00461979997021083" Z="0.992989307378253" W="0" />
-        <RowT X="0.0852502089368707" Y="0.00333439942004379" Z="-0.0288603478218459" W="1" />
+        <RowX X="0.991801564877159" Y="-0.127724386019258" Z="0.00401710383512027" W="0" />
+        <RowY X="0.0210010544423735" Y="0.131907228592333" Z="-0.991039574768535" W="0" />
+        <RowZ X="0.12605003617424" Y="0.982998964526969" Z="0.133508142520894" W="0" />
+        <RowT X="0.243959143643832" Y="-0.742870081236605" Z="0.384697473112459" W="1" />
       </Transform>
       <Source Value="" />
       <SourceFileTime HighPart="0" LowPart="0" />
@@ -7908,12 +7920,13 @@
       </CorrectionTransform>
     </MechanismLinkInstance>
     <MechanismLinkInstance ID="2345" Name="Link5" Parent="2339" PickingEnabled="true" Detectable="true" PhysicsMotionControl="0">
+      <UniqueId Value="{45663602-cf48-4d85-9bf7-ab24acffae3f}" />
       <Definition ID="18" DocID="1" />
       <Transform>
-        <RowX X="0.664998550759265" Y="0.0260101507038276" Z="-0.746391585930898" W="0" />
-        <RowY X="-0.0390832098280143" Y="0.999235959475808" Z="0" W="0" />
-        <RowZ X="0.745821312512332" Y="0.0291713789668018" Z="0.665507025095572" W="0" />
-        <RowT X="-0.214423037609746" Y="-0.00838674838649555" Z="0.486991356007337" W="1" />
+        <RowX X="0.99973152387434" Y="0.0069354732781278" Z="0.022108355486056" W="0" />
+        <RowY X="0.02100105444237" Y="0.131907228592333" Z="-0.991039574768535" W="0" />
+        <RowZ X="-0.00978958038927404" Y="0.991237803080319" Z="0.131726162398757" W="0" />
+        <RowT X="0.337108469088322" Y="-0.809333070970415" Z="0.377825179716499" W="1" />
       </Transform>
       <Source Value="" />
       <SourceFileTime HighPart="0" LowPart="0" />
@@ -7937,12 +7950,13 @@
       </CorrectionTransform>
     </MechanismLinkInstance>
     <MechanismLinkInstance ID="2346" Name="Link6" Parent="2339" PickingEnabled="true" Detectable="true" PhysicsMotionControl="0">
+      <UniqueId Value="{645dd984-3620-4c8d-9727-cd516d97b838}" />
       <Definition ID="19" DocID="1" />
       <Transform>
-        <RowX X="0.664998550759265" Y="0.0260101507038241" Z="-0.746391585930898" W="0" />
-        <RowY X="-0.00990425782076311" Y="0.999612613834671" Z="0.0260101507038252" W="0" />
-        <RowZ X="0.746778972096227" Y="-0.00990425782076591" Z="0.664998550759265" W="0" />
-        <RowT X="-0.215104891233479" Y="0.0194351050062543" Z="0.487353389734788" W="1" />
+        <RowX X="0.99973152387434" Y="0.00693547327812734" Z="0.0221083554860594" W="0" />
+        <RowY X="-0.0231706748251136" Y="0.299248873724095" Z="0.95389372123052" W="0" />
+        <RowZ X="-1.96065327525557E-07" Y="-0.954149889055838" Z="0.299329232141955" W="0" />
+        <RowT X="0.330138427449673" Y="0.57578296583053" Z="0.258491794059341" W="1" />
       </Transform>
       <Source Value="" />
       <SourceFileTime HighPart="0" LowPart="0" />
@@ -8073,13 +8087,13 @@
         </Attribute>
         <Attribute Key="jointvalues">
           <Value>
-            <String Value="0.321750551462173,0.6179319024086,-0.245067179203033,0,1.19793164730072,0.321750551462173" />
+            <String Value="0.126938089728355,1.20627665519714,-1.2094943523407,1.41405630111694,-0.121467672288418,-0.148847967386246" />
           </Value>
         </Attribute>
       </Attributes>
       <DeclarationInfo ID="2463" />
       <RoutineName Value="" />
-      <InitialExpression Value="[[775,100,131],[0,0,1,0],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]]" />
+      <InitialExpression Value="[[845,100,483],[0.574751622,0.411898872,0.565053226,0.425105569],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]]" />
     </DataDeclaration>
     <RAPIDDeclarationInfo ID="2463" Name="" Parent="2462" Local="false" EnableSync="true">
       <TaskName Value="" />
@@ -8100,18 +8114,18 @@
       <Attributes>
         <Attribute Key="ConfigDataAssigned">
           <Value>
-            <Integer Value="0" />
+            <Integer Value="1" />
           </Value>
         </Attribute>
         <Attribute Key="jointvalues">
           <Value>
-            <String Value="0.066712997853756,0.833832204341888,-0.631642460823059,0,0.865828692913055,0.0667130053043365" />
+            <String Value="-0.128075286746025,1.2071795463562,-1.21119666099548,-1.43688750267029,-0.136206150054932,2.70538377761841" />
           </Value>
         </Attribute>
       </Attributes>
       <DeclarationInfo ID="2469" />
       <RoutineName Value="" />
-      <InitialExpression Value="[[775,-100,131],[0,0,1,0],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]]" />
+      <InitialExpression Value="[[845,-100,483],[0.574751622,0.411898872,0.565053226,0.425105569],[-1,-1,1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]]" />
     </DataDeclaration>
     <RAPIDDeclarationInfo ID="2469" Name="" Parent="2468" Local="false" EnableSync="true">
       <TaskName Value="" />
@@ -8132,18 +8146,18 @@
       <Attributes>
         <Attribute Key="ConfigDataAssigned">
           <Value>
-            <Integer Value="1" />
+            <Integer Value="2" />
           </Value>
         </Attribute>
         <Attribute Key="jointvalues">
           <Value>
-            <String Value="0,-4.81448054756584E-08,1.28874532379086E-07,0,0.523598670959473,0" />
+            <String Value="0,0.506550133228302,-0.274763315916061,0,-0.231786832213402,1.57079637050629" />
           </Value>
         </Attribute>
       </Attributes>
       <DeclarationInfo ID="2472" />
       <RoutineName Value="" />
-      <InitialExpression Value="[[506.291651246,0,679.5],[0.5,0,0.866025404,0],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]]" />
+      <InitialExpression Value="[[679.496731982,0,579.499999962],[0.5,0.5,0.5,0.5],[0,0,1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]]" />
     </DataDeclaration>
     <RAPIDDeclarationInfo ID="2472" Name="" Parent="2471" Local="false" EnableSync="true">
       <TaskName Value="" />
@@ -8160,42 +8174,6 @@
       </ReferenceFrame>
       <Color Red="0" Green="0" Blue="0" Alpha="0" />
     </Target>
-    <DataRecorderSignal ID="2474" Name="" Parent="1">
-      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9878" />
-      <DataRecorderSignalDisplayPath Value="Controller Signals\#{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Speed In Current Wobj" />
-      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="0" SignalApproximateMin="10000" SignalQuantity="4">
-        <Tag Value="MotionSignal" />
-        <SignalDescription Value="" />
-      </DataRecorderSignalInfo>
-      <DataRecorderSignalSourceId Value="RobotStudio.ControllerSource" />
-    </DataRecorderSignal>
-    <DataRecorderSignal ID="2475" Name="" Parent="1">
-      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9881" />
-      <DataRecorderSignalDisplayPath Value="Controller Signals\#{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\X Position In Current Wobj" />
-      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="-10000" SignalApproximateMin="10000" SignalQuantity="2">
-        <Tag Value="MotionSignal" />
-        <SignalDescription Value="" />
-      </DataRecorderSignalInfo>
-      <DataRecorderSignalSourceId Value="RobotStudio.ControllerSource" />
-    </DataRecorderSignal>
-    <DataRecorderSignal ID="2476" Name="" Parent="1">
-      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9882" />
-      <DataRecorderSignalDisplayPath Value="Controller Signals\#{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\Y Position In Current Wobj" />
-      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="-10000" SignalApproximateMin="10000" SignalQuantity="2">
-        <Tag Value="MotionSignal" />
-        <SignalDescription Value="" />
-      </DataRecorderSignalInfo>
-      <DataRecorderSignalSourceId Value="RobotStudio.ControllerSource" />
-    </DataRecorderSignal>
-    <DataRecorderSignal ID="2477" Name="" Parent="1">
-      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9883" />
-      <DataRecorderSignalDisplayPath Value="Controller Signals\#{6B2B5E5B-1843-4F6D-8A45-2E8E6D658CDB}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\Z Position In Current Wobj" />
-      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="-10000" SignalApproximateMin="10000" SignalQuantity="2">
-        <Tag Value="MotionSignal" />
-        <SignalDescription Value="" />
-      </DataRecorderSignalInfo>
-      <DataRecorderSignalSourceId Value="RobotStudio.ControllerSource" />
-    </DataRecorderSignal>
     <RoutineArgument ID="2492" Name="Conc" Parent="2419" Enabled="false" />
     <RoutineArgument ID="2493" Name="ToPoint" Parent="2419" Value="Target_10_2" />
     <RoutineArgument ID="2494" Name="ID" Parent="2419" Enabled="false" />
@@ -8220,29 +8198,38 @@
     <RoutineArgument ID="2513" Name="Tool" Parent="2448" Value="tool0" />
     <RoutineArgument ID="2514" Name="WObj" Parent="2448" Value="wobj0" />
     <RoutineArgument ID="2515" Name="TLoad" Parent="2448" Enabled="false" />
-    <DataRecorderSignal ID="2516" Name="" Parent="1">
-      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\JointSignal\J1" />
-      <DataRecorderSignalDisplayPath Value="Controller Signals\#{60A55866-41FB-4FBD-BE00-C592EABCDACE}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\Joint\J1" />
-      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="-3.14159265358979" SignalApproximateMin="3.14159265358979" SignalQuantity="3">
-        <Tag Value="JointSignal" />
+    <DataRecorderSignal ID="2519" Name="" Parent="1">
+      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9881" />
+      <DataRecorderSignalDisplayPath Value="Controller Signals\#{666D30BB-668A-4538-802C-437A892FB238}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\X Position In Current Wobj" />
+      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="-10000" SignalApproximateMin="10000" SignalQuantity="2">
+        <Tag Value="MotionSignal" />
         <SignalDescription Value="" />
       </DataRecorderSignalInfo>
       <DataRecorderSignalSourceId Value="RobotStudio.ControllerSource" />
     </DataRecorderSignal>
-    <DataRecorderSignal ID="2517" Name="" Parent="1">
-      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\JointSignal\J2" />
-      <DataRecorderSignalDisplayPath Value="Controller Signals\#{60A55866-41FB-4FBD-BE00-C592EABCDACE}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\Joint\J2" />
-      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="-1.5707963267949" SignalApproximateMin="1.91986217719376" SignalQuantity="3">
-        <Tag Value="JointSignal" />
+    <DataRecorderSignal ID="2520" Name="" Parent="1">
+      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9882" />
+      <DataRecorderSignalDisplayPath Value="Controller Signals\#{666D30BB-668A-4538-802C-437A892FB238}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\Y Position In Current Wobj" />
+      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="-10000" SignalApproximateMin="10000" SignalQuantity="2">
+        <Tag Value="MotionSignal" />
         <SignalDescription Value="" />
       </DataRecorderSignalInfo>
       <DataRecorderSignalSourceId Value="RobotStudio.ControllerSource" />
     </DataRecorderSignal>
-    <DataRecorderSignal ID="2518" Name="" Parent="1">
-      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\JointSignal\J3" />
-      <DataRecorderSignalDisplayPath Value="Controller Signals\#{60A55866-41FB-4FBD-BE00-C592EABCDACE}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\Joint\J3" />
-      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="-4.01425727958696" SignalApproximateMin="0.872664625997165" SignalQuantity="3">
-        <Tag Value="JointSignal" />
+    <DataRecorderSignal ID="2521" Name="" Parent="1">
+      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9883" />
+      <DataRecorderSignalDisplayPath Value="Controller Signals\#{666D30BB-668A-4538-802C-437A892FB238}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Position\Z Position In Current Wobj" />
+      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="-10000" SignalApproximateMin="10000" SignalQuantity="2">
+        <Tag Value="MotionSignal" />
+        <SignalDescription Value="" />
+      </DataRecorderSignalInfo>
+      <DataRecorderSignalSourceId Value="RobotStudio.ControllerSource" />
+    </DataRecorderSignal>
+    <DataRecorderSignal ID="2522" Name="" Parent="1">
+      <DataRecorderSignalId Value="RobotStudio.ControllerSource\{666D30BB-668A-4538-802C-437A892FB238}\ROB_1\MotionSignal\9878" />
+      <DataRecorderSignalDisplayPath Value="Controller Signals\#{666D30BB-668A-4538-802C-437A892FB238}\IRB140_6_81\Mechanical Units\ROB_1 [IRB140_6_81_C_03]\TCP\Speed In Current Wobj" />
+      <DataRecorderSignalInfo SignalDataType="1" SignalInterpolationType="1" SignalApproximateMax="0" SignalApproximateMin="10000" SignalQuantity="4">
+        <Tag Value="MotionSignal" />
         <SignalDescription Value="" />
       </DataRecorderSignalInfo>
       <DataRecorderSignalSourceId Value="RobotStudio.ControllerSource" />
