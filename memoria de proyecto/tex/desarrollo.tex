@@ -186,4 +186,17 @@ No se observan anomalías ni efectos asociados a singularidades (a diferencia de
 
 Esta simulación no anula ni disminuye el valor de los resultados numéricos obtenidos, sino que le suma el aspecto real de la cinemática del robot.
 
+
+\subsection{Comparación con los límites de diseño (Datasheet)}
+
+Al contrastar la velocidad máxima teórica obtenida de $\qty{2.7}{\meter\per\second}$ para trayectorias horizontales con la máxima especificada por el fabricante ($\qty{2.5}{\meter\per\second}$), se observa una discrepancia esperable debida a las siguientes simplificaciones del modelo:
+
+\begin{itemize}
+	\item \textbf{Saturación de la muñeca (orientación):} Al evaluar únicamente la traslación (primeros 3 GDL), se omitió que mantener una orientación constante exige altas velocidades compensatorias en los ejes 4, 5 y 6. Al no modelarlos, se asumió una velocidad infinita en la muñeca, cuando en la realidad esta puede saturarse antes y limitar la velocidad cartesiana global.
+	
+	\item \textbf{Modelo puramente cinemático:} El uso de la Jacobiana inversa asume que los motores alcanzan sus velocidades máximas instantáneamente, ignorando factores dinámicos como inercias, masas y límites de torque bajo carga que el fabricante sí contempla para no dañar la estructura.
+	
+	\item \textbf{Limitaciones de control:} Más allá de la capacidad de los motores, los controladores industriales restringen por software la velocidad máxima del TCP (\textit{Tool Center Point}) para evitar vibraciones y garantizar la repetibilidad exigida.
+\end{itemize}
+
 \clearpage
