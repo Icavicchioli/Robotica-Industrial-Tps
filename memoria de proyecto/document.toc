@@ -8,6 +8,6 @@
 \contentsline {subsection}{\numberline {3.3}Refinamiento por optimización numérica}{3}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Resultados y análisis}{4}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Búsqueda de trayectoria optima}{4}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Simulación de la trayectoria}{6}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Comparación con los límites de diseño (Datasheet)}{10}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Conclusiones}{11}{section.5}%
+\contentsline {subsection}{\numberline {4.2}Simulación de la trayectoria}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Comparación con los límites de diseño (Datasheet)}{9}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Conclusiones}{10}{section.5}%
