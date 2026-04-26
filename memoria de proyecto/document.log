@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.4)  26 APR 2026 11:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.4.4)  26 APR 2026 12:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -988,46 +988,46 @@ Package pdftex.def Info: ./img/trayectorias_verticales.png  used on input line
 ] [3
 
 ]
-<./img/mapa_calor_xz.png, id=89, 690.1785pt x 577.4373pt>
+<./img/mapa_calor_xz.png, id=90, 690.1785pt x 577.4373pt>
 File: ./img/mapa_calor_xz.png Graphic file (type png)
 <use ./img/mapa_calor_xz.png>
-Package pdftex.def Info: ./img/mapa_calor_xz.png  used on input line 114.
+Package pdftex.def Info: ./img/mapa_calor_xz.png  used on input line 113.
 (pdftex.def)             Requested size: 290.22107pt x 242.81277pt.
-<./img/mapa_calor_verticales.png, id=91, 690.1785pt x 577.4373pt>
+<./img/mapa_calor_verticales.png, id=92, 690.1785pt x 577.4373pt>
 File: ./img/mapa_calor_verticales.png Graphic file (type png)
 <use ./img/mapa_calor_verticales.png>
 Package pdftex.def Info: ./img/mapa_calor_verticales.png  used on input line 12
-3.
+2.
 (pdftex.def)             Requested size: 290.22107pt x 242.81277pt.
  [4
 
  <./img/mapa_calor_xz.png>] [5 <./img/mapa_calor_verticales.png>]
-<img/robot img horizontal.png, id=108, 564.60938pt x 339.51843pt>
+<img/robot img horizontal.png, id=109, 564.60938pt x 339.51843pt>
 File: img/robot img horizontal.png Graphic file (type png)
 <use img/robot img horizontal.png>
-Package pdftex.def Info: img/robot img horizontal.png  used on input line 143.
+Package pdftex.def Info: img/robot img horizontal.png  used on input line 142.
 (pdftex.def)             Requested size: 338.58632pt x 203.60382pt.
-<img/Y vs t y velocidad.png, id=109, 714.7503pt x 860.013pt>
+<img/Y vs t y velocidad.png, id=110, 714.7503pt x 860.013pt>
 File: img/Y vs t y velocidad.png Graphic file (type png)
 <use img/Y vs t y velocidad.png>
-Package pdftex.def Info: img/Y vs t y velocidad.png  used on input line 151.
+Package pdftex.def Info: img/Y vs t y velocidad.png  used on input line 150.
 (pdftex.def)             Requested size: 338.58632pt x 407.40811pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<img/robot img vertical.png, id=112, 265.74281pt x 384.6872pt>
+<img/robot img vertical.png, id=113, 265.74281pt x 384.6872pt>
 File: img/robot img vertical.png Graphic file (type png)
 <use img/robot img vertical.png>
-Package pdftex.def Info: img/robot img vertical.png  used on input line 178.
+Package pdftex.def Info: img/robot img vertical.png  used on input line 177.
 (pdftex.def)             Requested size: 193.47578pt x 280.07971pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<img/verticaul.png, id=113, 714.7503pt x 860.013pt>
+<img/verticaul.png, id=114, 714.7503pt x 860.013pt>
 File: img/verticaul.png Graphic file (type png)
 <use img/verticaul.png>
-Package pdftex.def Info: img/verticaul.png  used on input line 185.
+Package pdftex.def Info: img/verticaul.png  used on input line 184.
 (pdftex.def)             Requested size: 338.58632pt x 407.40811pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1035,8 +1035,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [6
 
  <./img/robot img horizontal.png>] [7 <./img/Y vs t y velocidad.png>]
-[8 <./img/robot img vertical.png>] [9 <./img/verticaul.png>])
-(tex/conclusiones.tex) [10
+[8 <./img/robot img vertical.png>] [9 <./img/verticaul.png>] [10
+
+])
+(tex/conclusiones.tex) [11
 
 ] (document.aux (tex/title.aux)
 LaTeX Info: Redefining \. on input line 14.
@@ -1051,16 +1053,16 @@ L3 programming layer <2026-01-19>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: BB33B48EC9D946720F7B2BF4F327A2DA;776.
+(rerunfilecheck)             Checksum: E7A5CC93B1F499560D4E648F9CB7E54B;763.
  ) 
 Here is how much of TeX's memory you used:
- 30692 strings out of 467866
- 637514 string characters out of 5420250
+ 30693 strings out of 467866
+ 637521 string characters out of 5420250
  999744 words of memory out of 5000000
  59108 multiletter control sequences out of 15000+600000
  637483 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,12n,118p,784b,1133s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,118p,784b,1063s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx
 10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmbx12.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
@@ -1078,9 +1080,9 @@ Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/q/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/q/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/q/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on document.pdf (12 pages, 782160 bytes).
+Output written on document.pdf (13 pages, 783541 bytes).
 PDF statistics:
- 225 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
+ 231 PDF objects out of 1000 (max. 8388607)
+ 41 named destinations out of 1000 (max. 500000)
  98 words of extra memory for PDF output out of 10000 (max. 10000000)
 

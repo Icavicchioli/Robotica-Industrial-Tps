@@ -86,28 +86,27 @@ Con todo esto dicho, es posible crear un programa que calcule una solución num�
 
 
 \clearpage
-\section{Metodología para la Optimización de la Trayectoria}
+\section{Metodología para la Optimización de Trayectorias}
 
-Para determinar la ubicación óptima que permita ejecutar una trayectoria rectilínea de 200\,mm en el menor tiempo posible (a velocidad constante), se implementó un método de barrido espacial (\textit{Grid Search}). Esta estrategia evalúa conceptualmente el espacio de trabajo del manipulador basándose en los siguientes principios:
+Se realizaron dos experimentos independientes para determinar, en cada caso, la ubicación óptima que permita ejecutar una trayectoria rectilínea de \SI{200}{\mm} a la máxima velocidad constante posible. En ambos se utilizó un barrido sistemático del espacio de trabajo, seguido de un refinamiento por optimización numérica.
 
-\subsection{Exploración del Espacio de Trabajo}
-Se define una cuadrícula de evaluación sobre el plano $YZ$ que abarca el volumen de alcance físico útil del robot. En cada coordenada de esta cuadrícula, se proyecta la trayectoria rectilínea deseada. Esto se realiza para distintos planos paralelos al YZ a diferentes distancias.
+\subsection{Experimento 1: Trayectoria horizontal (dirección Y)}
+Se definió una cuadrícula en el plano $XZ$ (distancia horizontal desde la base y altura). Para cada punto $(X,Z)$ de la grilla, se consideró una trayectoria de \SI{200}{\mm} a lo largo del eje $Y$, con punto medio en $(X, 0, Z)$. La trayectoria se discretizó en puntos y, para cada uno, se calculó la máxima velocidad lineal posible en dirección $Y$ respetando los límites de velocidad articular. La velocidad máxima de toda la trayectoria quedó determinada por el punto más restrictivo. Con estos valores se construyó un mapa de velocidades sobre el plano $XZ$.
 
-\subsection{Análisis Cinemático Diferencial}
-Cada trayectoria propuesta se evalúa punto por punto a lo largo de su recorrido. Utilizando la matriz Jacobiana del robot, se relacionan los límites físicos de velocidad de cada motor con la velocidad cartesiana resultante en la herramienta. Esto permite identificar qué articulación se satura primero en cada instante, dictando la velocidad máxima posible en ese punto específico.
+\subsection{Experimento 2: Trayectoria vertical (dirección Z)}
+En este caso, la cuadrícula se definió nuevamente sobre el plano $XZ$, pero ahora cada punto $(X,Z)$ representa el punto medio de una trayectoria vertical de \SI{200}{\mm} en la dirección $Z$, manteniendo $Y=0$. El análisis puntual fue análogo al del experimento 1, pero con el vector de velocidad dirigido según $Z$. La velocidad constante máxima para cada trayectoria vertical se asignó al punto medio $(X,Z)$ correspondiente, generando un segundo mapa de velocidades.
 
-\subsection{Restricción de Velocidad Constante}
-Dado que la consigna exige que la velocidad se mantenga constante durante los 200\,mm, la velocidad máxima admisible para una trayectoria entera queda estrictamente limitada por su ``punto más lento'' (el cuello de botella cinemático a lo largo de esa recta). El algoritmo registra y compara estas velocidades mínimas sostenibles para encontrar la ubicación global más rápida.
+\subsection{Refinamiento por optimización numérica}
+En ambos experimentos, tras obtener los mapas de calor con una resolución de \SI{10}{\mm}, se aplicó un algoritmo de evolución diferencial para refinar la posición óptima. Dicho algoritmo explora continuamente el espacio de trabajo, penalizando las posiciones inalcanzables, y converge al punto que maximiza la velocidad constante sostenible.
 
 
-
-El código creado se encuentra en el repositorio del trabajo práctico.
+El código creado se encuentra en el \href{https://github.com/Icavicchioli/Robotica-Industrial-Tps/tree/1b1454d01ef875238b37204d2b72a497e9b86118/c%C3%B3digo%20manuel}{repositorio} del trabajo práctico.
 
 \clearpage
 \section{Resultados y análisis}
 
 \subsection{Búsqueda de trayectoria optima}
-El algoritmo fue llevado a cabo para trayectorias horizontales para distintos planos paralelos al YZ como se indico en las secciones anteriores. La Figura \ref{fig:mapa_horizontal} presenta un mapa de calor de la velocidad máxima para cada trayectoria evaluada. A partir de los resultados del algoritmo, se observa que, para este tipo de trayectoria, la velocidad máxima alcanzable es de \SI{2,7}{m/s}, y se obtiene en la posición (\SI{775}{mm}, \SI{131}{mm}). La trayectoria se desarrollaría desde (\SI{775}{mm}, \SI{100}{mm}, \SI{131}{mm}) hasta (\SI{775}{mm}, \SI{-100}{mm}, \SI{131}{mm}) (o viceversa), respecto del origen de las diapositivas.
+El algoritmo fue llevado a cabo para trayectorias horizontales para distintos planos paralelos al YZ como se indico en las secciones anteriores. La Figura \ref{fig:mapa_horizontal} presenta un mapa de calor de la velocidad máxima para cada trayectoria evaluada. A partir de los resultados del algoritmo, se observa que, para este tipo de trayectoria, la velocidad máxima alcanzable es de \SI{2,7}{m/s}, y se obtiene moviéndose desde (\SI{775}{mm}, \SI{100}{mm}, \SI{131}{mm}) hasta (\SI{775}{mm}, \SI{-100}{mm}, \SI{131}{mm}) (o viceversa), respecto del origen del robot de las diapositivas.
 
 \begin{figure}[H]
 		\centering
@@ -195,7 +194,7 @@ No se observan anomalías ni efectos asociados a singularidades (a diferencia de
 
 Esta simulación no anula ni disminuye el valor de los resultados numéricos obtenidos, sino que le suma el aspecto real de la cinemática del robot.
 
-
+\clearpage
 \subsection{Comparación con los límites de diseño (Datasheet)}
 
 Al contrastar la velocidad máxima teórica obtenida de $\qty{2.7}{\meter\per\second}$ para trayectorias horizontales con la máxima especificada por el fabricante ($\qty{2.5}{\meter\per\second}$), se observa una discrepancia esperable debida a las siguientes simplificaciones del modelo:
