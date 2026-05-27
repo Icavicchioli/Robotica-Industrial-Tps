@@ -1,0 +1,5 @@
+MODULE CalibData
+    PERS tooldata Pinza:=[TRUE,[[0,0,137],[0.980785,0,0,-0.19509]],[0.5,[0,0,100],[1,0,0,0],0,0,0]];
+    TASK PERS wobjdata mesa:=[FALSE,TRUE,"",[[665,5,260],[0,0,0,1]],[[0,0,0],[1,0,0,0]]];
+    PERS wobjdata perno:=[FALSE,TRUE,"",[[400,180,130],[0.707107,-0.707107,0,0]],[[0,0,0],[1,0,0,0]]];
+ENDMODULE
