@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Metadata Version="1">
+  <Id>c966404c1cbe4106a806b826abdec476</Id>
+  <Name>Recording-31</Name>
+  <EventCount>1</EventCount>
+  <StartedUtc>2026-05-30T02:53:17.9945047Z</StartedUtc>
+  <EndedUtc>2026-05-30T02:53:31.2894969Z</EndedUtc>
+  <TotalTime>0</TotalTime>
+  <Signals />
+  <Sources>
+    <Source type="Station" id="{ba1a1d9c-79e5-4e61-9e9b-519c619ab2cf}" displayName="TPL1" />
+  </Sources>
+</Metadata>

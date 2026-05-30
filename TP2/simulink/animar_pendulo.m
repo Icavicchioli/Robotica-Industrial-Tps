@@ -1,47 +1,83 @@
-function animar_pendulo(out)
+function animar_pendulo(out,fps)
 
-t = out.tout;
-
-x = squeeze(out.simout.signals.values);
-
-if size(x,2)~=4
-    x=x.';
+if nargin < 2
+    fps = 30;
 end
 
-q1=x(:,1);
-q2=x(:,2);
+t_original = out.tout;
 
-a1=0.2;
-a2=0.2;
+x_original = squeeze(out.simout.signals.values);
 
-x1=a1*cos(q1);
-y1=a1*sin(q1);
+if size(x_original,2) ~= 4
+    x_original = x_original.';
+end
 
-x2=x1+a2*cos(q1+q2);
-y2=y1+a2*sin(q1+q2);
+% -------------------------------------------------
+% Remuestreo temporal uniforme para el video
+% -------------------------------------------------
 
-figure
+Ttot = t_original(end) - t_original(1);
+
+Nframes = max(round(Ttot*fps),1);
+
+t = linspace(t_original(1),...
+             t_original(end),...
+             Nframes);
+
+q1 = interp1(t_original,...
+             x_original(:,1),...
+             t,...
+             'linear');
+
+q2 = interp1(t_original,...
+             x_original(:,2),...
+             t,...
+             'linear');
+
+% -------------------------------------------------
+
+a1 = 0.2;
+a2 = 0.2;
+
+x1 = a1*cos(q1);
+y1 = a1*sin(q1);
+
+x2 = x1 + a2*cos(q1+q2);
+y2 = y1 + a2*sin(q1+q2);
+
+figure('Position',[100 100 560 420])
 
 axis equal
 grid on
 hold on
 
-L=a1+a2;
+L = a1 + a2;
 
 xlim([-L L])
 ylim([-L L])
 
-h=plot([0 x1(1) x2(1)],...
-       [0 y1(1) y2(1)],...
-       '-o',...
-       'LineWidth',3,...
-       'MarkerSize',8);
+h = plot([0 x1(1) x2(1)],...
+         [0 y1(1) y2(1)],...
+         '-o',...
+         'LineWidth',3,...
+         'MarkerSize',8);
 
-traj=plot(x2(1),y2(1));
+traj = plot(x2(1),y2(1),...
+            'LineWidth',1.5);
 
-txt=text(-0.35,0.35,'');
+txt = text(-0.35,0.35,'');
 
-for k=1:length(t)
+% ---------------- VIDEO ----------------
+
+v = VideoWriter('pendulo.mp4','MPEG-4');
+
+v.FrameRate = fps;
+
+open(v);
+
+% ---------------------------------------
+set(gcf,'Resize','off')
+for k = 1:length(t)
 
     set(h,...
         'XData',[0 x1(k) x2(k)],...
@@ -51,19 +87,31 @@ for k=1:length(t)
         'XData',x2(1:k),...
         'YData',y2(1:k))
 
-        q1deg=rad2deg(q1(k));
-        q2deg=rad2deg(q2(k));
+    q1deg = rad2deg(q1(k));
+    q2deg = rad2deg(q2(k));
 
     set(txt,...
         'String',...
-        sprintf(['t=%.2f s\n' ...
-                 'q1=%.1f°\n' ...
-                 'q2=%.1f°'],...
+        sprintf(['t = %.2f s\n' ...
+                 'q1 = %.1f°\n' ...
+                 'q2 = %.1f°'],...
                  t(k),...
                  q1deg,...
                  q2deg))
 
     drawnow
 
+    frame = getframe(gcf);
+
+    writeVideo(v,frame);
 
 end
+
+close(v);
+
+close(gcf);
+
+disp('Video generado: pendulo.mp4')
+
+end
+
