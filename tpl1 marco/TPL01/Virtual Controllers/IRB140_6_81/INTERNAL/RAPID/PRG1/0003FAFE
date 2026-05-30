@@ -1,0 +1,105 @@
+MODULE Module1
+    CONST robtarget INSERTAR_PIEZA:=[[65,340,3],[1,0,0,0],[-1,1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    VAR robtarget TOMAR_PIEZA; 
+    !caso 1
+    CONST robtarget TOMAR_PIEZA_VERTICAL:=[[0,0,10],[0.5,0.5,-0.5,0.5],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !caso 2
+    CONST robtarget TOMAR_PIEZA_HORIZONTAL:=[[0,0,10],[1,0,0,0],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+        
+    !Definicion de herramienta con perno
+    PERS tooldata TCP_perno := [TRUE,[[0,0,227],[0.980785,0,0,-0.19509]],[0.5,[0,0,100],[1,0,0,0],0,0,0]];
+    
+    !Transformacion pinza a perno
+    VAR pose pinza_to_perno := [[90,0,0], [0,0,0,0]];
+     
+    VAR num MODO_PICK := 1; ! MODO_VERICAL = 0, MODO_HORIZONTAL = 1
+    
+    PROC main()
+        
+        init;
+        test_path;
+        
+    ENDPROC
+    
+    PROC test_path()
+
+        aproximar_perno;
+        
+        cerrar_pinza;
+        
+        aproximar_hueco;
+        
+        abrir_pinza;
+
+        ir_inicio;
+        
+    ENDPROC
+    
+    
+    PROC init()
+        !Calculo de transformaciones de herramientas
+        IF MODO_PICK = 0 THEN
+            pinza_to_perno := [[90,0,0], OrientZYX(0,90,0)];
+            TOMAR_PIEZA := TOMAR_PIEZA_VERTICAL;
+        ELSE 
+            pinza_to_perno := [[0,0,90], OrientZYX(0,0,0)];
+            TOMAR_PIEZA := TOMAR_PIEZA_HORIZONTAL;
+        ENDIF
+            
+        TCP_perno.tframe := PoseMult(Pinza.tframe, pinza_to_perno);
+        
+        !Iniciar señales
+        SetDO DO_Pinza,0;
+        
+    ENDPROC
+
+    
+    PROC aproximar_perno() 
+        VAR num offset:=50;
+           
+        !Aproximacion para agarrar
+        MoveJ Offs(TOMAR_PIEZA,0,offset,0),v1000,fine,Pinza\WObj:=REF_Perno;
+        MoveL TOMAR_PIEZA,v1000,fine,Pinza\WObj:=REF_Perno;
+    
+    ENDPROC
+    
+    PROC cerrar_pinza() 
+        !Agarrar Pieza
+        SetDO DO_Pinza,1;
+    ENDPROC
+    
+    PROC aproximar_hueco() 
+        
+        VAR num offset:=150;
+        
+        !Separase del punto de toma
+        MoveL Offs(TOMAR_PIEZA,0,offset,0),v1000,fine,Pinza\WObj:=REF_Perno;
+
+        !Ir hasta el hueco
+        MoveJ Offs(INSERTAR_PIEZA,0,0, -offset),v1000,fine,TCP_perno\WObj:=REF_Mesa;
+        
+        !Insertar
+        MoveL INSERTAR_PIEZA,v1000,fine,TCP_perno\WObj:=REF_Mesa;
+        
+    ENDPROC
+    
+    
+    PROC abrir_pinza() 
+        !Soltar Pieza
+        SetDO DO_Pinza,0;
+    ENDPROC
+    
+    PROC ir_inicio()
+        
+        VAR num offset:=300;
+        
+        !Salir del hueco
+        MoveL Offs(INSERTAR_PIEZA,0,0, -offset),v1000,fine,TCP_perno\WObj:=REF_Mesa;
+        
+        !Volver al inicio
+        
+        
+    ENDPROC
+    
+ENDMODULE
