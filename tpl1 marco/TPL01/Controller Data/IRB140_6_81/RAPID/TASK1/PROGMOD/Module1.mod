@@ -59,7 +59,7 @@ MODULE Module1
         VAR num offset:=50;
            
         !Aproximacion para agarrar
-        MoveJ Offs(TOMAR_PIEZA,0,offset,0),v1000,fine,Pinza\WObj:=REF_Perno;
+        MoveJ Offs(TOMAR_PIEZA,0,offset,0),v500,fine,Pinza\WObj:=REF_Perno;
         MoveL TOMAR_PIEZA,v1000,fine,Pinza\WObj:=REF_Perno;
     
     ENDPROC
@@ -74,13 +74,13 @@ MODULE Module1
         VAR num offset:=150;
         
         !Separase del punto de toma
-        MoveL Offs(TOMAR_PIEZA,0,offset,0),v1000,fine,Pinza\WObj:=REF_Perno;
+        MoveL Offs(TOMAR_PIEZA,0,offset,0),v500,fine,Pinza\WObj:=REF_Perno;
 
         !Ir hasta el hueco
-        MoveJ Offs(INSERTAR_PIEZA,0,0, -offset),v1000,fine,TCP_perno\WObj:=REF_Mesa;
+        MoveJ Offs(INSERTAR_PIEZA,0,0, -offset),v500,fine,TCP_perno\WObj:=REF_Mesa;
         
         !Insertar
-        MoveL INSERTAR_PIEZA,v1000,fine,TCP_perno\WObj:=REF_Mesa;
+        MoveL INSERTAR_PIEZA,v500,fine,TCP_perno\WObj:=REF_Mesa;
         
     ENDPROC
     
@@ -92,10 +92,10 @@ MODULE Module1
     
     PROC ir_inicio()
         
-        VAR num offset:=300;
+        VAR num offset:=200;
         
         !Salir del hueco
-        MoveL Offs(INSERTAR_PIEZA,0,0, -offset),v1000,fine,TCP_perno\WObj:=REF_Mesa;
+        MoveL Offs(INSERTAR_PIEZA,0,0, -offset),v500,fine,TCP_perno\WObj:=REF_Mesa;
         
         !Volver al inicio
         
