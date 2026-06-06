@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP5 — Control de Doble Péndulo | Grupo Droideka</title>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #08142a;
+      --panel:      #0d1f3c;
+      --panel2:     #0a2050;
+      --border:     #1a3a6b;
+      --blue1:      #4a8fe8;
+      --blue2:      #7ec8e3;
+      --text:       #d6e4f7;
+      --muted:      #7890a8;
+      --formula-bg: #071830;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+    }
+
+    /* ── Deck ── */
+    #deck { width: 100vw; height: 100vh; position: relative; }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2.5rem 5rem 4rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .slide.active { opacity: 1; pointer-events: auto; }
+
+    .slide-inner {
+      width: 100%;
+      max-width: 1150px;
+      overflow-y: auto;
+      max-height: calc(100vh - 7rem);
+    }
+
+    /* ── Nav ── */
+    #nav {
+      position: fixed;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 100;
+    }
+    #nav button {
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      color: var(--blue1);
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #nav button:hover { background: var(--border); }
+    #counter { color: var(--muted); font-size: 0.78rem; min-width: 4.5rem; text-align: center; }
+
+    /* ── Type ── */
+    .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue1);
+      margin-bottom: 0.4rem;
+    }
+    h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; line-height: 1.15; }
+    h2 { font-size: clamp(1.1rem, 2.2vw, 1.55rem); font-weight: 600; color: var(--blue2); margin-bottom: 1rem; }
+    h3 { font-size: 0.88rem; font-weight: 600; color: var(--blue1); margin-bottom: 0.35rem; }
+    p  { font-size: 0.88rem; line-height: 1.6; }
+
+    .line { width: 3rem; height: 2px; background: var(--blue1); margin: 0.7rem 0 1rem; }
+
+    /* ── Formula ── */
+    .formula {
+      background: var(--formula-bg);
+      border-left: 3px solid var(--blue1);
+      border-radius: 3px;
+      padding: 0.75rem 1.2rem;
+      margin: 0.5rem 0;
+      overflow-x: auto;
+    }
+
+    /* ── Layouts ── */
+    .col2       { display: grid; grid-template-columns: 1fr 1fr;       gap: 2rem; width: 100%; align-items: start; }
+    .col2-37    { display: grid; grid-template-columns: 3fr 7fr;       gap: 2rem; width: 100%; align-items: start; }
+    .col2-wide  { display: grid; grid-template-columns: 2fr 3fr;       gap: 2rem; width: 100%; align-items: start; }
+    .col3       { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; width: 100%; }
+
+    /* ── Image cards ── */
+    .img-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.45rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .img-card img   { width: 100%; height: auto; display: block; border-radius: 2px; }
+    .img-card .cap  { font-size: 0.7rem; color: var(--muted); text-align: center; }
+
+    /* ── Panel ── */
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.3rem;
+    }
+
+    /* ── Cover ── */
+    .cover { text-align: center; }
+    .cover h1 { font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: 0.35rem; }
+    .cover .subtitle { font-size: 0.95rem; color: var(--blue2); margin-bottom: 1.8rem; }
+    .members { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+    .member {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .group-badge {
+      display: inline-block;
+      background: var(--panel2);
+      border: 1px solid var(--blue1);
+      border-radius: 4px;
+      color: var(--blue1);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Bullet list ── */
+    .blist { list-style: none; }
+    .blist li {
+      padding: 0.28rem 0;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    .blist li::before { content: '•'; color: var(--blue1); flex-shrink: 0; }
+
+    /* ── Table ── */
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th { color: var(--blue2); font-weight: 600; padding: 0.38rem 0.6rem; border-bottom: 1px solid var(--border); text-align: left; }
+    td { padding: 0.32rem 0.6rem; border-bottom: 1px solid #0f2444; }
+
+    /* ── Video ── */
+    video { width: 100%; border-radius: 3px; border: 1px solid var(--border); }
+
+    /* ── Scenario heading ── */
+    .sc-head {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue1);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.7rem;
+    }
+
+    /* ── Class-style theory slide ── */
+    .theory-title {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 2px solid var(--blue1);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .theory-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      margin-bottom: 0.6rem;
+    }
+    .theory-item > p { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+<div id="deck">
+
+  <!-- ══════════════════ SLIDE 1 — Portada ══════════════════ -->
+  <div class="slide active" id="s1">
+    <div class="slide-inner">
+      <div class="cover">
+        <div class="group-badge">Grupo Droideka</div>
+        <div class="tag">Robótica Industrial · FIUBA · 2026</div>
+        <h1>TP5: Dinámica y Control<br>de Doble Péndulo</h1>
+        <div class="line" style="margin: 0.9rem auto;"></div>
+        <p class="subtitle">Simulación y diseño de controladores PD, PID y PD+FF</p>
+        <div class="members">
+          <div class="member">Manuel Hirsch</div>
+          <div class="member">Marco Brischetto</div>
+          <div class="member">Ignacio Cavicchioli</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 2 — Modelo Dinámico ══════════════════ -->
+  <div class="slide" id="s2">
+    <div class="slide-inner">
+      <div class="tag">Modelo del sistema</div>
+      <h2>Dinámica del Doble Péndulo</h2>
+
+      <div class="col2">
+        <div>
+          <p style="margin-bottom:0.7rem;">
+            Robot de dos eslabones en el plano, modelado mediante la formulación de Lagrange:
+          </p>
+          <div class="formula">
+            \[\boldsymbol{\tau} = \mathbf{M}(\mathbf{q})\,\ddot{\mathbf{q}} + \mathbf{C}(\mathbf{q},\dot{\mathbf{q}})\,\dot{\mathbf{q}} + \mathbf{G}(\mathbf{q})\]
+          </div>
+          <ul class="blist" style="margin-top:0.8rem;">
+            <li>\(\mathbf{M}(\mathbf{q})\): matriz de inercia (dependiente de la postura)</li>
+            <li>\(\mathbf{C}(\mathbf{q},\dot{\mathbf{q}})\,\dot{\mathbf{q}}\): fuerzas de Coriolis y centrífugas</li>
+            <li>\(\mathbf{G}(\mathbf{q})\): cargas gravitacionales</li>
+          </ul>
+          <p style="margin-top:0.9rem; font-size:0.82rem; color:var(--muted);">
+            Sistema MIMO, no lineal y acoplado.
+            \(\boldsymbol{\tau}\) afecta ambas articulaciones simultáneamente.
+          </p>
+        </div>
+
+        <div>
+          <div class="panel">
+            <h3>Parámetros (consigna TP5)</h3>
+            <table style="margin-top:0.5rem;">
+              <thead><tr><th>Parámetro</th><th>Eslabón 1</th><th>Eslabón 2</th></tr></thead>
+              <tbody>
+                <tr><td>Longitud \(a\) [m]</td><td>0.20</td><td>0.20</td></tr>
+                <tr><td>Masa \(m\) [kg]</td><td>1.5</td><td>1.0</td></tr>
+                <tr><td>COM \(\mathbf{r}_G\)</td><td>\([-a_1/2\ 0\ 0]^T\)</td><td>\([-a_2/2\ 0\ 0]^T\)</td></tr>
+                <tr><td>\(I_{zzG}\) [kg·m²]</td><td>\(10^{-3}\)</td><td>\(10^{-4}\)</td></tr>
+              </tbody>
+            </table>
+            <p style="margin-top:0.7rem; font-size:0.8rem; color:var(--muted);">
+              \(\mathbf{g}^0 = [0\ \ {-9.81}\ \ 0]^T\ \text{m/s}^2\)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 3 — Sin control: Rozamiento ══════════════════ -->
+  <div class="slide" id="s3">
+    <div class="slide-inner">
+      <div class="tag">Simulación libre — lazo abierto</div>
+      <h2>Sin control: Rozamiento</h2>
+      <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem;">
+        Condición inicial \(q = [0,\ 0]\), viscosidad nominal. La fricción viscosa disipa la energía y el sistema decae al reposo.
+      </p>
+      <div class="col3">
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Rozamiento/q_rozamiento.png" alt="q rozamiento">
+          <div class="cap">Posiciones articulares \(q_1,\, q_2\) [°] vs. tiempo</div>
+        </div>
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Rozamiento/qd_rozamiento.png" alt="qd rozamiento">
+          <div class="cap">Velocidades articulares \(\dot{q}_1,\, \dot{q}_2\) [°/s] vs. tiempo</div>
+        </div>
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Rozamiento/trayectoria_rozamiento.png" alt="trayectoria rozamiento">
+          <div class="cap">Trayectoria del extremo efector en el plano XY [m]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 4 — Sin control: Poco Rozamiento ══════════════════ -->
+  <div class="slide" id="s4">
+    <div class="slide-inner">
+      <div class="tag">Simulación libre — lazo abierto</div>
+      <h2>Sin control: Poco rozamiento</h2>
+      <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem;">
+        Viscosidad reducida (\(B = 0.1\)). Con baja disipación, las oscilaciones se prolongan durante mayor tiempo sin llegar al reposo.
+      </p>
+      <div class="col3">
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Poco%20Rozamiento/q_poco_rozamiento.png" alt="q poco rozamiento">
+          <div class="cap">Posiciones articulares \(q_1,\, q_2\) [°] vs. tiempo</div>
+        </div>
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Poco%20Rozamiento/qd_poco_rozamiento.png" alt="qd poco rozamiento">
+          <div class="cap">Velocidades articulares \(\dot{q}_1,\, \dot{q}_2\) [°/s] vs. tiempo</div>
+        </div>
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Poco%20Rozamiento/trayectoria_poco_rozamiento.png" alt="trayectoria poco rozamiento">
+          <div class="cap">Trayectoria del extremo efector en el plano XY [m]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 5 — Sin control: Caótico ══════════════════ -->
+  <div class="slide" id="s5">
+    <div class="slide-inner">
+      <div class="tag">Simulación libre — lazo abierto</div>
+      <h2>Sin control: Comportamiento caótico</h2>
+      <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem;">
+        Sin fricción (\(B = 0\), \(J_m = 0\)). El sistema exhibe comportamiento caótico: movimiento no periódico e impredecible, sensible a las condiciones iniciales.
+      </p>
+      <div class="col3">
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Caotico/q_caotico.png" alt="q caotico">
+          <div class="cap">Posiciones articulares \(q_1,\, q_2\) [°] vs. tiempo</div>
+        </div>
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Caotico/qd_caotico.png" alt="qd caotico">
+          <div class="cap">Velocidades articulares \(\dot{q}_1,\, \dot{q}_2\) [°/s] vs. tiempo</div>
+        </div>
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Caotico/trayectoria_caotico.png" alt="trayectoria caotico">
+          <div class="cap">Trayectoria del extremo efector en el plano XY [m]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 6 — Sin control: Equilibrio Inestable ══════════════════ -->
+  <div class="slide" id="s6">
+    <div class="slide-inner">
+      <div class="tag">Simulación libre — lazo abierto</div>
+      <h2>Sin control: Equilibrio inestable</h2>
+      <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem;">
+        Condición inicial \(q_1 = 90° + \varepsilon\). Una pequeña perturbación aleja al sistema del equilibrio inestable y cae abruptamente.
+      </p>
+      <div class="col3">
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Equilibrio%20inestable/q_eq_inestable.png" alt="q equilibrio inestable">
+          <div class="cap">Posiciones articulares \(q_1,\, q_2\) [°] vs. tiempo</div>
+        </div>
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Equilibrio%20inestable/qd_eq_inestable.png" alt="qd equilibrio inestable">
+          <div class="cap">Velocidades articulares \(\dot{q}_1,\, \dot{q}_2\) [°/s] vs. tiempo</div>
+        </div>
+        <div class="img-card">
+          <img src="Imagenes%20simulacion/Sin%20Control/Equilibrio%20inestable/trayectoria_eq_inestable.png" alt="trayectoria equilibrio inestable">
+          <div class="cap">Trayectoria del extremo efector en el plano XY [m]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 7 — Formulación PD (estilo clase) ══════════════════ -->
+  <div class="slide" id="s7">
+    <div class="slide-inner">
+      <div class="theory-title">Resumen control PD</div>
+
+      <div class="col2">
+        <div>
+          <ul class="blist">
+            <li>\(N\) sistemas SISO estables de lazo cerrado</li>
+            <li>Velocidad de respuesta \((\omega_n)\):</li>
+          </ul>
+          <div class="formula" style="margin: 0.5rem 0 0.8rem;">
+            \[K_p = \dfrac{\omega_n^2\,J_{ef}}{N\,K_m}\]
+          </div>
+
+          <ul class="blist">
+            <li>Respuesta críticamente amortiguada:</li>
+          </ul>
+          <div class="formula" style="margin: 0.5rem 0 0.8rem;">
+            \[K_d = \dfrac{2\sqrt{N\,K_m\,K_p\,J_{ef}} - B_{ef}}{N\,K_m}\]
+          </div>
+
+          <ul class="blist">
+            <li>Planta con 1 integrador a lazo abierto (Sistema tipo 1) → seguimiento de referencias tipo escalón</li>
+            <li>Error por perturbaciones escalón depende de \(\omega_n\)</li>
+            <li>Límites a la velocidad de respuesta:</li>
+          </ul>
+          <div class="formula" style="margin: 0.5rem 0;">
+            \[\omega_n < \dfrac{\omega_e}{2} \qquad \wedge \qquad \omega_n < \dfrac{1}{20}\dfrac{2\pi}{T_s}\]
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <h3>Ley de control implementada</h3>
+            <div class="formula" style="margin: 0.5rem 0;">
+              \[\tau_i = N_i\bigl[K_{p,i}(q_{ref,i} - q_i) + K_{d,i}(-\dot{q}_i)\bigr]\]
+            </div>
+            <h3 style="margin-top:0.9rem;">Parámetros de diseño</h3>
+            <table style="margin-top:0.5rem;">
+              <thead><tr><th>Parámetro</th><th>Valor</th></tr></thead>
+              <tbody>
+                <tr><td>Frec. natural \(\omega_n\)</td><td>60 rad/s</td></tr>
+                <tr><td>Período de muestreo \(T_s\)</td><td>1 ms</td></tr>
+                <tr><td>Saturación \(|\tau|\)</td><td>10 N·m</td></tr>
+              </tbody>
+            </table>
+            <h3 style="margin-top:0.9rem;">Ganancias obtenidas</h3>
+            <table style="margin-top:0.5rem;">
+              <thead><tr><th></th><th>Art. 1</th><th>Art. 2</th></tr></thead>
+              <tbody>
+                <tr><td>\(K_p\)</td><td>6.700</td><td>4.144</td></tr>
+                <tr><td>\(K_d\)</td><td>0.213</td><td>0.128</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 8 — Resultados PD ══════════════════ -->
+  <div class="slide" id="s8">
+    <div class="slide-inner">
+      <div class="tag">Control PD — Resultados</div>
+      <h2>Simulación PD</h2>
+
+      <div class="col2-wide">
+        <div style="display:flex; flex-direction:column; gap:0.7rem;">
+          <div class="img-card">
+            <img src="Imagenes%20simulacion/PD/estadosPD.png" alt="estados PD">
+            <div class="cap">Posición y velocidad articular vs. referencia</div>
+          </div>
+          <div class="img-card">
+            <img src="Imagenes%20simulacion/PD/errorPD.png" alt="error PD">
+            <div class="cap">Error de seguimiento articular</div>
+          </div>
+          <div class="img-card">
+            <img src="Imagenes%20simulacion/PD/trayectoriaPD.png" alt="trayectoria PD">
+            <div class="cap">Trayectoria cartesiana del extremo efector</div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:0.8rem;">
+          <video controls muted>
+            <source src="Imagenes%20simulacion/PD/VideoPD.mp4" type="video/mp4">
+          </video>
+          <ul class="blist">
+            <li>Respuesta rápida sin sobrepico significativo.</li>
+            <li>Error residual en estado estacionario causado por la carga gravitacional no compensada.</li>
+            <li>El torque se satura momentáneamente al inicio de cada segmento de trayectoria.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 9 — Formulación PID ══════════════════ -->
+  <div class="slide" id="s9">
+    <div class="slide-inner">
+      <div class="theory-title">Control PID</div>
+
+      <div class="col2">
+        <div>
+          <ul class="blist">
+            <li>Se agrega acción integral para eliminar el error en estado estacionario causado por perturbaciones constantes (gravedad).</li>
+          </ul>
+          <div class="formula" style="margin: 0.6rem 0;">
+            \[\tau_i = N_i\Bigl[K_{p,i}\,e_i \;+\; K_{d,i}(-\dot{q}_i) \;+\; K_{i,i}\int e_i\,dt\Bigr]\]
+          </div>
+
+          <ul class="blist" style="margin-top:0.4rem;">
+            <li>La ganancia integral se sintoniza a partir de \(K_p\) y el tiempo integral \(T_i\):</li>
+          </ul>
+          <div class="formula" style="margin: 0.5rem 0;">
+            \[K_{i,i} = \dfrac{K_{p,i}}{T_i}\]
+          </div>
+
+          <ul class="blist" style="margin-top:0.4rem;">
+            <li>\(K_p\) y \(K_d\) idénticos al caso PD</li>
+            <li>Cuidado con el <em>windup</em> del integrador durante saturación</li>
+            <li>Mayor tendencia al sobreimpulso en la respuesta transitoria</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="panel">
+            <h3>Parámetros de diseño</h3>
+            <table style="margin-top:0.5rem;">
+              <thead><tr><th>Parámetro</th><th>Valor</th></tr></thead>
+              <tbody>
+                <tr><td>Frec. natural \(\omega_n\)</td><td>60 rad/s</td></tr>
+                <tr><td>Tiempo integral \(T_i\)</td><td>100 ms</td></tr>
+                <tr><td>Saturación \(|\tau|\)</td><td>10 N·m</td></tr>
+              </tbody>
+            </table>
+            <h3 style="margin-top:0.9rem;">Ganancias obtenidas</h3>
+            <table style="margin-top:0.5rem;">
+              <thead><tr><th></th><th>Art. 1</th><th>Art. 2</th></tr></thead>
+              <tbody>
+                <tr><td>\(K_p\)</td><td>6.700</td><td>4.144</td></tr>
+                <tr><td>\(K_d\)</td><td>0.213</td><td>0.128</td></tr>
+                <tr><td>\(K_i\)</td><td>67.00</td><td>41.44</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 10 — Resultados PID ══════════════════ -->
+  <div class="slide" id="s10">
+    <div class="slide-inner">
+      <div class="tag">Control PID — Resultados</div>
+      <h2>Simulación PID</h2>
+
+      <div class="col2-wide">
+        <div style="display:flex; flex-direction:column; gap:0.7rem;">
+          <div class="img-card">
+            <img src="Imagenes%20simulacion/PID/estadosPID.png" alt="estados PID">
+            <div class="cap">Posición y velocidad articular vs. referencia</div>
+          </div>
+          <div class="img-card">
+            <img src="Imagenes%20simulacion/PID/errorPID.png" alt="error PID">
+            <div class="cap">Error de seguimiento articular</div>
+          </div>
+          <div class="img-card">
+            <img src="Imagenes%20simulacion/PID/trayectoriaPID.png" alt="trayectoria PID">
+            <div class="cap">Trayectoria cartesiana del extremo efector</div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:0.8rem;">
+          <video controls muted>
+            <source src="Imagenes%20simulacion/PID/VideoPID.mp4" type="video/mp4">
+          </video>
+          <ul class="blist">
+            <li>La acción integral elimina el error estacionario causado por la gravedad.</li>
+            <li>Mayor sobreimpulso transitorio respecto al PD.</li>
+            <li>Se observa <em>windup</em> del integrador durante las fases de saturación de torque.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 11 — Formulación PD+FF ══════════════════ -->
+  <div class="slide" id="s11">
+    <div class="slide-inner">
+      <div class="theory-title">Control PD + Feedforward gravitacional</div>
+
+      <div class="col2">
+        <div>
+          <ul class="blist">
+            <li>Se agrega compensación explícita de gravedad y feedforward de aceleración nominal.</li>
+            <li>A diferencia del par calculado, <strong>no</strong> se cancela \(\mathbf{M}(\mathbf{q})\) ni \(\mathbf{C}\): el sistema sigue siendo no lineal.</li>
+          </ul>
+          <div class="formula" style="margin: 0.6rem 0;">
+            \[\boldsymbol{\tau} = \mathbf{M}_{nom}\,\ddot{\mathbf{q}}_{ref} + K_p\,\mathbf{e} + K_d\,\dot{\mathbf{e}} + \mathbf{G}(\mathbf{q})\]
+          </div>
+
+          <ul class="blist" style="margin-top:0.4rem;">
+            <li>\(\mathbf{M}_{nom}\): inercia evaluada en el punto de operación nominal \(\mathbf{q}_{nom}\)</li>
+            <li>Sintonización con las mismas fórmulas de la teoría (igual que PD):</li>
+          </ul>
+          <div class="formula" style="margin: 0.5rem 0;">
+            \[K_{p,i} = \frac{\omega_n^2\,J_{ef,i}}{N\,K_m} \qquad K_{d,i} = \frac{2\sqrt{N\,K_m\,K_{p,i}\,J_{ef,i}} - B_{ef,i}}{N\,K_m}\]
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <h3>Ventaja frente al PID</h3>
+            <p style="font-size:0.83rem; color:var(--muted); margin-top:0.4rem;">
+              La compensación gravitacional explícita elimina el error estático
+              sin integrador, evitando el <em>windup</em> y mejorando la estabilidad robusta.
+            </p>
+            <h3 style="margin-top:0.9rem;">Parámetros de diseño</h3>
+            <table style="margin-top:0.5rem;">
+              <thead><tr><th>Parámetro</th><th>Valor</th></tr></thead>
+              <tbody>
+                <tr><td>Frec. natural \(\omega_n\)</td><td>60 rad/s</td></tr>
+                <tr><td>\(\mathbf{q}_{nom}\)</td><td>\([0,\ \pi/2]\)</td></tr>
+                <tr><td>Saturación \(|\tau|\)</td><td>10 N·m</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 12 — Resultados PD+FF ══════════════════ -->
+  <div class="slide" id="s12">
+    <div class="slide-inner">
+      <div class="tag">Control PD+FF — Resultados</div>
+      <h2>Simulación PD + Feedforward</h2>
+
+      <div class="col2-wide">
+        <div style="display:flex; flex-direction:column; gap:0.7rem;">
+          <div class="img-card">
+            <img src="Imagenes%20simulacion/PD+FF/estadosFF.png" alt="estados FF">
+            <div class="cap">Posición y velocidad articular vs. referencia</div>
+          </div>
+          <div class="img-card">
+            <img src="Imagenes%20simulacion/PD+FF/errorFF.png" alt="error FF">
+            <div class="cap">Error de seguimiento articular</div>
+          </div>
+          <div class="img-card">
+            <img src="Imagenes%20simulacion/PD+FF/trayectoriaFF.png" alt="trayectoria FF">
+            <div class="cap">Trayectoria cartesiana del extremo efector</div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:0.8rem;">
+          <video controls muted>
+            <source src="Imagenes%20simulacion/PD+FF/VideoFF.mp4" type="video/mp4">
+          </video>
+          <ul class="blist">
+            <li>Error estático notablemente reducido sin acción integral.</li>
+            <li>Respuesta transitoria limpia, sin <em>windup</em>.</li>
+            <li>El sistema sigue siendo no lineal: sin cancelación completa de la dinámica.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /#deck -->
+
+<!-- Navigation -->
+<div id="nav">
+  <button id="prev">&#8592;</button>
+  <span id="counter">1 / 12</span>
+  <button id="next">&#8594;</button>
+</div>
+
+<script>
+  const slides  = document.querySelectorAll('.slide');
+  const total   = slides.length;
+  let current   = 0;
+  const counter = document.getElementById('counter');
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    current = (n + total) % total;
+    slides[current].classList.add('active');
+    counter.textContent = `${current + 1} / ${total}`;
+  }
+
+  document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown',' '].includes(e.key)) goTo(current + 1);
+    if (['ArrowLeft','ArrowUp'].includes(e.key))        goTo(current - 1);
+  });
+</script>
+</body>
+</html>
