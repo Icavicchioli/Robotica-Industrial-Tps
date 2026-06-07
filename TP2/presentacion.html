@@ -508,15 +508,15 @@
                 <tr><td>Saturación \(|\tau|\)</td><td>10 N·m</td></tr>
               </tbody>
             </table>
-            <h3 style="margin-top:0.9rem;">Ganancias obtenidas</h3>
-            <table style="margin-top:0.5rem;">
-              <thead><tr><th></th><th>Art. 1</th><th>Art. 2</th></tr></thead>
-              <tbody>
-                <tr><td>\(K_p\)</td><td>41.8</td><td>11.5</td></tr>
-                <tr><td>\(K_d\)</td><td>0.548</td><td>0.220</td></tr>
-                <tr><td>\(K_i\)</td><td>418</td><td>115</td></tr>
-              </tbody>
-            </table>
+              <h3 style="margin-top:0.9rem;">Ganancias obtenidas</h3>
+              <table style="margin-top:0.5rem;">
+                <thead><tr><th></th><th>Art. 1</th><th>Art. 2</th></tr></thead>
+                <tbody>
+                  <tr><td>\(K_p\)</td><td>41.8</td><td>11.5</td></tr>
+                  <tr><td>\(K_d\)</td><td>0.548</td><td>0.220</td></tr>
+                  <tr><td>\(K_i\)</td><td>418</td><td>115</td></tr>
+                </tbody>
+              </table>
           </div>
         </div>
       </div>
@@ -574,6 +574,11 @@
             \[\boldsymbol{\tau} = \mathbf{M}_{nom}\,\ddot{\mathbf{q}}_{ref} + K_p\,\mathbf{e} + K_d\,\dot{\mathbf{e}} + \mathbf{G}(\mathbf{q})\]
           </div>
 
+          <div class="formula" style="margin: 0.6rem 0;">
+            \[u(t) = K_p \left[q^d(t)-q(t)\right] + K_d \left[\dot{q}^d(t)-\dot{q}(t)\right]+ \left[\frac{J_{ef}}{N K_m}\,\ddot{q}^d(t)+ \frac{B_{ef}}{N K_m}\,\dot{q}^d(t)\right]\]
+          </div>
+
+
           <ul class="blist" style="margin-top:0.4rem;">
             <li>\(\mathbf{M}_{nom}\): inercia evaluada en el punto de operación nominal \(\mathbf{q}_{nom}\)</li>
             <li>Sintonización con las mismas fórmulas de la teoría (igual que PD):</li>
@@ -581,6 +586,10 @@
           <div class="formula" style="margin: 0.5rem 0;">
             \[K_{p,i} = \frac{\omega_n^2\,J_{ef,i}}{N\,K_m} \qquad K_{d,i} = \frac{2\sqrt{N\,K_m\,K_{p,i}\,J_{ef,i}} - B_{ef,i}}{N\,K_m}\]
           </div>
+          <div class="formula" style="margin: 0.5rem 0;">
+            \[K_{ff1,i} = \frac{J_{ef,i}}{N K_m} \qquad K_{ff2,i} = \frac{B_{ef,i}}{N K_m} \]
+          </div>
+
         </div>
 
         <div>
@@ -597,6 +606,17 @@
                 <tr><td>Frec. natural \(\omega_n\)</td><td>[200, 150]rad/s</td></tr>
                 <tr><td>\(\mathbf{q}_{nom}\)</td><td>\([0,\ \pi/2]\)</td></tr>
                 <tr><td>Saturación \(|\tau|\)</td><td>10 N·m</td></tr>
+              </tbody>
+            </table>
+            <h3 style="margin-top:0.9rem;">Ganancias obtenidas</h3>
+            <table style="margin-top:0.5rem;">
+              <thead><tr><th></th><th>Art. 1</th><th>Art. 2</th></tr></thead>
+              <tbody>
+                <tr><td>\(K_p\)</td><td>41.8</td><td>11.5</td></tr>
+                <tr><td>\(K_d\)</td><td>0.548</td><td>0.220</td></tr>
+                <tr><td>\(K_{ff1}\)</td><td>1.86e-3</td><td>1.15e-3</td></tr>
+                <tr><td>\(K_{ff2}\)</td><td>10e-3</td><td>10e-3</td></tr>
+              
               </tbody>
             </table>
           </div>
